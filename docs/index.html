@@ -10,6 +10,23 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600&family=Noto+Serif+JP:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
+        /* ── Skip Link ── */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #1a2744;
+            color: #f5eed9;
+            padding: 8px 16px;
+            z-index: 100;
+            transition: top 0.2s;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        .skip-link:focus {
+            top: 0;
+        }
+
         /* ── Base ── */
         body {
             font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', sans-serif;
@@ -471,12 +488,22 @@
             transition: color 0.15s;
         }
         .footer-link:hover { color: #f5eed9; }
+
+        /* ── Navigation inline styles ── */
+        nav {
+            background: white;
+            border-bottom: 1px solid #e8e4dd;
+        }
+        #mobile-menu {
+            border-color: #e8e4dd;
+        }
     </style>
 </head>
 <body>
+    <a href="#main-content" class="skip-link">本文へスキップ</a>
 
     <!-- Navigation -->
-    <nav class="fixed top-0 w-full shadow-sm z-50" style="background: white; border-bottom: 1px solid #e8e4dd;">
+    <nav class="fixed top-0 w-full shadow-sm z-50">
         <div class="max-w-6xl mx-auto px-4 md:px-6">
             <div class="flex justify-between items-center h-16">
                 <div class="nav-brand">第38回 環動昆年次大会</div>
@@ -495,7 +522,7 @@
                 </button>
             </div>
         </div>
-        <div class="hidden md:hidden bg-white border-t" id="mobile-menu" style="border-color: #e8e4dd;">
+        <div class="hidden md:hidden bg-white border-t" id="mobile-menu">
             <div class="max-w-6xl mx-auto px-4 py-3 space-y-1">
                 <a href="#overview" class="mobile-link">概要</a>
                 <a href="#schedule" class="mobile-link">日程</a>
@@ -524,7 +551,7 @@
         </div>
     </header>
 
-    <main class="max-w-6xl mx-auto px-4 md:px-6">
+    <main id="main-content" class="max-w-6xl mx-auto px-4 md:px-6">
 
         <!-- Overview -->
         <section id="overview" class="section-padding" style="border-bottom: 1px solid #ddd8ce;">
@@ -638,16 +665,16 @@
                     <h3 class="text-xl font-semibold text-gray-800 mb-4" style="font-family: 'Noto Serif JP', serif; color: #1a2744; border-bottom: 2px solid #9a7c3f; padding-bottom: 0.5rem;">一般講演</h3>
                     
                     <!-- Tabs -->
-                    <div class="border-b border-gray-300 mb-6">
+                    <div class="border-b border-gray-300 mb-6" role="tablist" aria-label="発表プログラムタブ">
                         <div class="flex space-x-2">
-                            <button id="tab-oral1" class="tab-button px-4 py-2 font-medium text-gray-600 border-b-2 border-transparent hover:text-gray-800 transition-colors" onclick="switchTab('oral1')">口頭発表 1日目</button>
-                            <button id="tab-oral2" class="tab-button px-4 py-2 font-medium text-gray-600 border-b-2 border-transparent hover:text-gray-800 transition-colors" onclick="switchTab('oral2')">口頭発表 2日目</button>
-                            <button id="tab-poster" class="tab-button px-4 py-2 font-medium text-gray-600 border-b-2 border-transparent hover:text-gray-800 transition-colors" onclick="switchTab('poster')">ポスター発表</button>
+                            <button id="tab-oral1" class="tab-button px-4 py-2 font-medium text-gray-600 border-b-2 border-transparent hover:text-gray-800 transition-colors" data-tab="oral1" role="tab" aria-selected="true" aria-controls="tab-content-oral1">口頭発表 1日目</button>
+                            <button id="tab-oral2" class="tab-button px-4 py-2 font-medium text-gray-600 border-b-2 border-transparent hover:text-gray-800 transition-colors" data-tab="oral2" role="tab" aria-selected="false" aria-controls="tab-content-oral2">口頭発表 2日目</button>
+                            <button id="tab-poster" class="tab-button px-4 py-2 font-medium text-gray-600 border-b-2 border-transparent hover:text-gray-800 transition-colors" data-tab="poster" role="tab" aria-selected="false" aria-controls="tab-content-poster">ポスター発表</button>
                         </div>
                     </div>
 
                     <!-- Tab Content -->
-                    <div id="tab-content-oral1" class="tab-content">
+                    <div id="tab-content-oral1" class="tab-content" role="tabpanel" aria-labelledby="tab-oral1">
                         <div class="card">
                             <div class="text-center py-10">
                                 <p class="text-gray-600 mb-2">11月14日（土）の口頭発表プログラム</p>
@@ -661,7 +688,7 @@
                         </div>
                     </div>
 
-                    <div id="tab-content-oral2" class="tab-content" style="display: none;">
+                    <div id="tab-content-oral2" class="tab-content" role="tabpanel" aria-labelledby="tab-oral2" style="display: none;">
                         <div class="card">
                             <div class="text-center py-10">
                                 <p class="text-gray-600 mb-2">11月15日（日）の口頭発表プログラム</p>
@@ -675,7 +702,7 @@
                         </div>
                     </div>
 
-                    <div id="tab-content-poster" class="tab-content" style="display: none;">
+                    <div id="tab-content-poster" class="tab-content" role="tabpanel" aria-labelledby="tab-poster" style="display: none;">
                         <div class="card">
                             <div class="text-center py-10">
                                 <p class="text-gray-600 mb-2">ポスター発表プログラム（11月14日）</p>
@@ -893,11 +920,11 @@
                     <!-- Right: Maps -->
                     <div class="space-y-4">
                         <figure class="access-img-wrapper">
-                            <img src="canpus_map.png" alt="関西学院大学 西宮上ケ原キャンパスマップ" loading="lazy">
+                            <img src="campus_map.png" alt="関西学院大学 西宮上ケ原キャンパスマップ" loading="lazy" width="800" height="600">
                             <figcaption class="access-img-caption">キャンパスマップ（西宮上ケ原）</figcaption>
                         </figure>
                         <figure class="access-img-wrapper">
-                            <img src="access.png" alt="関西学院大学へのアクセスマップ" loading="lazy">
+                            <img src="access.png" alt="関西学院大学へのアクセスマップ" loading="lazy" width="800" height="600">
                             <figcaption class="access-img-caption">アクセスマップ（最寄駅・バス路線）</figcaption>
                         </figure>
                     </div>
@@ -948,34 +975,41 @@
 
         // Tab switching function
         function switchTab(tabName) {
-            // Hide all tab contents
             document.querySelectorAll('.tab-content').forEach(content => {
                 content.style.display = 'none';
             });
 
-            // Remove active class from all tabs
             document.querySelectorAll('.tab-button').forEach(tab => {
                 tab.classList.remove('active');
                 tab.style.borderBottom = '2px solid transparent';
+                tab.setAttribute('aria-selected', 'false');
             });
 
-            // Show selected tab content
             const selectedContent = document.getElementById('tab-content-' + tabName);
             if (selectedContent) {
                 selectedContent.style.display = 'block';
             }
 
-            // Add active class to selected tab
             const selectedTab = document.getElementById('tab-' + tabName);
             if (selectedTab) {
                 selectedTab.classList.add('active');
                 selectedTab.style.borderBottom = '2px solid #9a7c3f';
+                selectedTab.setAttribute('aria-selected', 'true');
             }
         }
 
-        // Initialize first tab as active
+        // Initialize tabs
         document.addEventListener('DOMContentLoaded', function() {
-            // Set first tab as active
+            const tabButtons = document.querySelectorAll('.tab-button');
+            tabButtons.forEach(button => {
+                const tabName = button.getAttribute('data-tab');
+                if (tabName) {
+                    button.addEventListener('click', function() {
+                        switchTab(tabName);
+                    });
+                }
+            });
+
             const firstTab = document.getElementById('tab-oral1');
             if (firstTab) {
                 firstTab.classList.add('active');
