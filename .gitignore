@@ -4,3 +4,4 @@ src/
 tailwind.config.js
 *.zip
 .DS_Store
+.opencode/
