@@ -5,556 +5,180 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>第38回日本環境動物昆虫学会年次大会</title>
     <link rel="icon" type="image/png" href="icon.png">
-    <link rel="stylesheet" href="output.css">
     <style>
-        /* ── Skip Link ── */
-        .skip-link {
-            position: absolute;
-            top: -40px;
-            left: 0;
-            background: #1a2744;
-            color: #f5eed9;
-            padding: 8px 16px;
-            z-index: 100;
-            transition: top 0.2s;
-            text-decoration: none;
-            font-size: 0.9rem;
-        }
-        .skip-link:focus {
-            top: 0;
-        }
-
-        /* ── Base ── */
-        body {
-            font-family: 'M PLUS 1p', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif;
-            font-size: 15px;
-            line-height: 1.85;
-            color: #2c2820;
-            background-color: #f5f3ee;
-            scroll-behavior: smooth;
-        }
-        h1, h2, h3 {
-            font-family: 'Hiragino Mincho ProN', 'Hiragino Mincho', 'Yu Mincho', 'MS PMincho', serif;
-        }
-        .section-padding { padding-top: 80px; padding-bottom: 70px; }
-
-        /* ── Section heading ── */
-        .section-heading {
-            font-family: 'Hiragino Mincho ProN', 'Hiragino Mincho', 'Yu Mincho', 'MS PMincho', serif;
-            font-weight: 600;
-            font-size: 1.5rem;
-            color: #1a2744;
-            letter-spacing: 0.04em;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            margin-bottom: 2rem;
-        }
-        .section-heading::before {
-            content: '';
-            display: block;
-            width: 3px;
-            height: 1.6rem;
-            background: linear-gradient(to bottom, #c4a44e, #9a7c3f);
-            border-radius: 2px;
-            flex-shrink: 0;
-        }
-
-        /* ── Data label ── */
-        .data-label {
-            font-family: 'Noto Sans JP', sans-serif;
-            font-size: 0.68rem;
-            font-weight: 600;
-            letter-spacing: 0.14em;
-            color: #9a7c3f;
-            text-transform: uppercase;
-            margin-bottom: 0.25rem;
-        }
-
-        /* ── Card ── */
-        .card {
-            background: #fdfcf9;
-            border: 1px solid #ddd8ce;
-            border-radius: 4px;
-            padding: 2rem 2.5rem;
-            box-shadow: 0 2px 12px rgba(26, 39, 68, 0.06);
-        }
-
-        /* ── Notice box (gold left border) ── */
-        .notice-box {
-            background: #fef8ec;
-            border: 1px solid #d4a942;
-            border-left-width: 3px;
-            border-radius: 3px;
-            padding: 1rem 1.25rem;
-            font-size: 0.875rem;
-            color: #7a5a1a;
-        }
-
-        /* ── Warning box (crimson left border) ── */
-        .warning-box {
-            background: #fdf4f4;
-            border: 1px solid #ddd8ce;
-            border-left: 4px solid #9b2020;
-            border-radius: 3px;
-            padding: 1rem 1.25rem;
-            font-size: 0.875rem;
-            color: #2c2820;
-        }
-
-        /* ── Deadline text ── */
-        .deadline { color: #9b2020; font-weight: 600; }
-
-        /* ── Hero ── */
-        .hero {
-            background-color: #1a2744;
-            background-image: linear-gradient(160deg, #1a2744 55%, #2d3f6b 100%);
-            padding-top: 7rem;
-            padding-bottom: 5rem;
-            position: relative;
-            overflow: hidden;
-        }
-        .hero::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background-image: repeating-linear-gradient(
-                90deg,
-                transparent,
-                transparent 79px,
-                rgba(196, 164, 78, 0.07) 79px,
-                rgba(196, 164, 78, 0.07) 80px
-            );
-            pointer-events: none;
-        }
-        .hero-title {
-            font-family: 'Noto Serif JP', serif;
-            font-size: clamp(1.6rem, 4vw, 2.75rem);
-            font-weight: 700;
-            color: #f5eed9;
-            letter-spacing: 0.03em;
-            line-height: 1.55;
-        }
-        .hero-meta {
-            font-size: clamp(1rem, 2vw, 1.2rem);
-            color: #c4a44e;
-            letter-spacing: 0.06em;
-            margin-top: 1.25rem;
-        }
-        .hero-venue {
-            font-size: 0.95rem;
-            color: rgba(232, 237, 245, 0.75);
-            margin-top: 0.5rem;
-            letter-spacing: 0.04em;
-        }
-        .hero-badge {
-            display: inline-block;
-            margin-top: 1.75rem;
-            padding: 0.45rem 1.5rem;
-            border: 1px solid rgba(196, 164, 78, 0.45);
-            border-radius: 2px;
-            color: rgba(245, 238, 217, 0.88);
-            font-size: 0.82rem;
-            letter-spacing: 0.1em;
-            background: rgba(196, 164, 78, 0.1);
-        }
-
-        /* ── Navigation ── */
-        .nav-brand {
-            font-family: 'Hiragino Mincho ProN', 'Hiragino Mincho', 'Yu Mincho', 'MS PMincho', serif;
-            font-weight: 600;
-            font-size: 0.95rem;
-            color: #1a2744;
-            letter-spacing: 0.05em;
-        }
-        .nav-link {
-            font-size: 0.85rem;
-            letter-spacing: 0.05em;
-            color: #2c2820;
-            text-decoration: none;
-            padding-bottom: 2px;
-            border-bottom: 2px solid transparent;
-            transition: color 0.15s, border-color 0.15s;
-        }
-        .nav-link:hover {
-            color: #1a2744;
-            border-bottom-color: #9a7c3f;
-        }
-        .mobile-link {
-            display: block;
-            padding: 0.6rem 0;
-            font-size: 0.9rem;
-            color: #2c2820;
-            border-bottom: 1px solid #eeebe5;
-            letter-spacing: 0.04em;
-            transition: color 0.15s, padding-left 0.15s;
-        }
-        .mobile-link:hover { color: #1a2744; padding-left: 0.25rem; }
-
-        /* ── Schedule ── */
-        .schedule-day {
-            border: 1px solid #ddd8ce;
-            border-top: 3px solid #1a2744;
-            background: #fdfcf9;
-            border-radius: 3px;
-            overflow: hidden;
-        }
-        .schedule-day.pre-event { border-top-color: #6b7a9a; }
-        .schedule-day-header {
-            background: #1a2744;
-            color: #e8edf5;
-            font-family: 'Hiragino Mincho ProN', 'Hiragino Mincho', 'Yu Mincho', 'MS PMincho', serif;
-            font-size: 1rem;
-            font-weight: 600;
-            padding: 0.75rem 1.5rem;
-            letter-spacing: 0.05em;
-        }
-        .schedule-day.pre-event .schedule-day-header { background: #6b7a9a; }
-        .schedule-day-sub {
-            font-size: 0.78rem;
-            color: #9a7c3f;
-            padding: 0.45rem 1.5rem;
-            border-bottom: 1px solid #e8edf5;
-            background: #f3f5f9;
-            letter-spacing: 0.08em;
-        }
-        .schedule-row {
-            display: flex;
-            align-items: baseline;
-            gap: 1.5rem;
-            padding: 0.65rem 1.5rem;
-            border-bottom: 1px solid #eeebe5;
-            font-size: 0.875rem;
-        }
-        .schedule-row:last-child { border-bottom: none; }
-        .schedule-row.highlight { background: #f5eed9; color: #5a4010; font-weight: 500; }
-        .schedule-time {
-            font-variant-numeric: tabular-nums;
-            font-size: 0.82rem;
-            color: #9c9287;
-            flex-shrink: 0;
-            width: 9rem;
-        }
-
-        /* ── Fee table ── */
-        .fee-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
-        .fee-table th {
-            background: #1a2744;
-            color: #e8edf5;
-            padding: 0.75rem 1rem;
-            font-weight: 600;
-            font-size: 0.78rem;
-            letter-spacing: 0.06em;
-            text-align: left;
-            border: 1px solid #2d3f6b;
-        }
-        .fee-table th.col-highlight { background: #9a7c3f; }
-        .fee-table td {
-            padding: 0.75rem 1rem;
-            border: 1px solid #ddd8ce;
-            vertical-align: middle;
-        }
-        .fee-table tbody tr:nth-child(odd) td { background: #fdfcf9; }
-        .fee-table tbody tr:nth-child(even) td { background: #f5f3ee; }
-        .fee-amount { font-weight: 600; color: #1a2744; }
-
-        /* ── Bank box ── */
-        .bank-box {
-            background: #f3f5f9;
-            border: 1px solid #c5cce0;
-            border-left: 3px solid #1a2744;
-            border-radius: 3px;
-            padding: 1.25rem 1.5rem;
-            font-size: 0.875rem;
-        }
-        .bank-box .bank-label {
-            font-size: 0.7rem;
-            font-weight: 600;
-            letter-spacing: 0.12em;
-            color: #9a7c3f;
-            margin-bottom: 0.4rem;
-        }
-        .bank-box p { margin: 0.2rem 0; }
-
-        /* ── CTA Button ── */
-        .btn-primary {
-            display: inline-block;
-            background: #1a2744;
-            color: #f5eed9;
-            font-family: 'Noto Sans JP', sans-serif;
-            font-weight: 600;
-            font-size: 0.9rem;
-            letter-spacing: 0.06em;
-            padding: 0.9rem 2rem;
-            border-radius: 3px;
-            text-align: center;
-            transition: background 0.2s, box-shadow 0.2s;
-            box-shadow: 0 2px 8px rgba(26, 39, 68, 0.18);
-            text-decoration: none;
-        }
-        .btn-primary:hover {
-            background: #2d3f6b;
-            box-shadow: 0 4px 16px rgba(26, 39, 68, 0.25);
-        }
-
-        /* ── Presentation cards ── */
-        .pres-card {
-            background: #fdfcf9;
-            border: 1px solid #ddd8ce;
-            border-top: 3px solid #9a7c3f;
-            border-radius: 3px;
-            padding: 1.5rem 1.75rem;
-        }
-        .pres-card h3 {
-            font-family: 'Hiragino Mincho ProN', 'Hiragino Mincho', 'Yu Mincho', 'MS PMincho', serif;
-            font-size: 1rem;
-            font-weight: 600;
-            color: #1a2744;
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid #e8edf5;
-            letter-spacing: 0.04em;
-        }
-        .pres-card li {
-            font-size: 0.875rem;
-            line-height: 1.75;
-            list-style: none;
-            padding: 0.3rem 0 0.3rem 1.2rem;
-            border-bottom: 1px dashed #eeebe5;
-            color: #2c2820;
-            position: relative;
-        }
-        .pres-card li:last-child { border-bottom: none; }
-        .pres-card li::before {
-            content: '—';
-            color: #9a7c3f;
-            position: absolute;
-            left: 0;
-            font-size: 0.75rem;
-        }
-
-        /* ── Abstract/awards box ── */
-        .info-card {
-            background: #fdfcf9;
-            border: 1px solid #ddd8ce;
-            border-top: 3px solid #1a2744;
-            border-radius: 3px;
-            padding: 1.5rem 1.75rem;
-        }
-        .info-card h3 {
-            font-family: 'Hiragino Mincho ProN', 'Hiragino Mincho', 'Yu Mincho', 'MS PMincho', serif;
-            font-size: 1rem;
-            font-weight: 600;
-            color: #1a2744;
-            margin-bottom: 0.75rem;
-            letter-spacing: 0.04em;
-        }
-
-        /* ── Link ── */
-        .link-academic {
-            color: #2d3f6b;
-            font-weight: 500;
-            text-decoration: underline;
-            text-underline-offset: 3px;
-            text-decoration-color: #9a7c3f;
-            transition: color 0.15s;
-        }
+        /* Base */
+        body { font-family: sans-serif; font-size: 15px; line-height: 1.85; color: #2c2820; background: #f5f3ee; margin: 0; scroll-behavior: smooth; }
+        h1, h2, h3 { font-family: serif; }
+        .section-padding { padding: 80px 0 70px; border-bottom: 1px solid #ddd; }
+        .max-w { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        
+        /* Skip Link */
+        .skip-link { position: absolute; top: -40px; left: 0; background: #1a2744; color: #f5eed9; padding: 8px 16px; z-index: 100; transition: top 0.2s; text-decoration: none; }
+        .skip-link:focus { top: 0; }
+        
+        /* Nav */
+        nav { position: fixed; top: 0; width: 100%; background: white; border-bottom: 1px solid #e8e4dd; z-index: 50; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .nav-header { display: flex; justify-content: space-between; align-items: center; height: 64px; padding: 0 20px; }
+        .nav-brand { font-weight: bold; font-size: 1rem; color: #1a2744; }
+        .nav-links { display: none; gap: 2rem; }
+        .nav-links.show { display: flex; }
+        @media (min-width: 768px) { .nav-links { display: flex; } #menu-btn { display: none; } }
+        .nav-link { color: #2c2820; text-decoration: none; padding-bottom: 4px; border-bottom: 2px solid transparent; }
+        .nav-link:hover { color: #1a2744; border-bottom-color: #9a7c3f; }
+        #mobile-menu { display: none; background: white; border-top: 1px solid #e8e4dd; }
+        #mobile-menu.show { display: block; }
+        .mobile-link { display: block; padding: 12px 20px; color: #2c2820; text-decoration: none; border-bottom: 1px solid #eee; }
+        .mobile-link:hover { color: #1a2744; padding-left: 24px; }
+        #menu-btn { background: none; border: none; cursor: pointer; }
+        
+        /* Hero */
+        .hero { background: linear-gradient(160deg, #1a2744 55%, #2d3f6b); padding: 140px 0 100px; color: #f5eed9; text-align: center; position: relative; }
+        .hero h1 { font-size: 2.5rem; font-weight: bold; line-height: 1.4; margin: 0 0 20px; }
+        @media (min-width: 768px) { .hero h1 { font-size: 3.5rem; } }
+        .hero-meta { font-size: 1.2rem; margin: 0 0 10px; color: #c4a44e; }
+        .hero-badge { display: inline-block; margin-top: 20px; padding: 12px 24px; border: 1px solid rgba(196,164,78,0.45); border-radius: 4px; color: rgba(245,238,217,0.9); font-size: 0.9rem; background: rgba(196,164,78,0.1); }
+        
+        /* Sections */
+        .section-heading { display: flex; align-items: center; gap: 12px; font-size: 1.5rem; color: #1a2744; font-weight: 600; margin-bottom: 2rem; }
+        .section-heading::before { content: ''; width: 4px; height: 24px; background: #c4a44e; border-radius: 2px; }
+        .card { background: #fdfcf9; border: 1px solid #ddd; border-radius: 8px; padding: 2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .card:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
+.grid { display: grid; gap: 2rem; }
+.grid-cols-2 { grid-template-columns: 1fr; }
+.grid-cols-3 { grid-template-columns: 1fr; }
+@media (min-width: 768px) { .grid-cols-2 { grid-template-columns: 1fr 1fr; } .grid-cols-3 { grid-template-columns: repeat(3,1fr); } }
+        .notice-box { background: #fef8ec; border-left: 4px solid #d4a942; padding: 1rem; border-radius: 4px; margin-top: 1.5rem; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .notice-box:hover { transform: translateX(4px); box-shadow: 0 4px 12px rgba(212,169,66,0.2); }
+        .warning-box { background: #fdf4f4; border-left: 4px solid #9b2020; padding: 1rem; border-radius: 4px; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .warning-box:hover { transform: translateX(4px); box-shadow: 0 4px 12px rgba(155,32,32,0.2); }
+        .data-label { font-size: 0.8rem; font-weight: bold; color: #9a7c3f; text-transform: uppercase; margin-bottom: 0.5rem; letter-spacing: 0.1em; }
+        .deadline { color: #9b2020; font-weight: bold; }
+        table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.9rem; }
+        th { background: #1a2744; color: white; padding: 12px; text-align: left; border: 1px solid #2d3f6b; }
+        td { padding: 12px; border: 1px solid #ddd; vertical-align: top; }
+        tbody tr:nth-child(odd) { background: #fdfcf9; }
+        tbody tr { transition: background 0.2s ease; }
+        tbody tr:hover { background: #fef8ec; }
+        .btn-primary { display: inline-block; background: #1a2744; color: white; padding: 12px 24px; border-radius: 4px; text-decoration: none; font-weight: bold; box-shadow: 0 2px 8px rgba(26,39,68,0.2); transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease; }
+        .btn-primary:hover { background: #2d3f6b; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(26,39,68,0.3); }
+        .pres-card { background: #fdfcf9; border: 1px solid #ddd; border-top: 4px solid #9a7c3f; border-radius: 4px; padding: 1.5rem; margin-bottom: 1.5rem; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .pres-card:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(0,0,0,0.12); }
+        .pres-card h3 { font-size: 1.1rem; color: #1a2744; margin-bottom: 1rem; border-bottom: 1px solid #e8e4dd; padding-bottom: 0.5rem; }
+        .pres-card ul { list-style: none; padding: 0; }
+        .pres-card li { position: relative; padding-left: 1.5rem; border-bottom: 1px dashed #eee; padding-bottom: 0.5rem; margin-bottom: 0.5rem; }
+        .pres-card li::before { content: '—'; color: #9a7c3f; position: absolute; left: 0; }
+        .info-card { background: #fdfcf9; border: 1px solid #ddd; border-top: 4px solid #1a2744; border-radius: 4px; padding: 1.5rem; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .info-card:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(0,0,0,0.12); }
+        .link-academic { color: #2d3f6b; text-decoration: underline; font-weight: 500; }
         .link-academic:hover { color: #9a7c3f; }
-
-        /* ── Access images ── */
-        .access-img-wrapper {
-            border: 1px solid #ddd8ce;
-            border-radius: 3px;
-            overflow: hidden;
-            background: #f5f3ee;
-            margin: 0;
-        }
-        .access-img-wrapper img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-        .access-img-caption {
-            padding: 0.5rem 0.75rem;
-            font-size: 0.75rem;
-            color: #9c9287;
-            border-top: 1px solid #ddd8ce;
-            background: #fdfcf9;
-            letter-spacing: 0.05em;
-        }
-
-        /* ── Kids box (navy left border) ── */
-        .kids-box {
-            background: #f3f5f9;
-            border: 1px solid #c5cce0;
-            border-left: 4px solid #1a2744;
-            border-radius: 3px;
-            padding: 1rem 1.25rem;
-            font-size: 0.875rem;
-            color: #1a2744;
-        }
-
-        /* ── Accordion (details/summary) ── */
-        .accordion-item summary {
-            cursor: pointer;
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 0.2rem;
-        }
+        .access-img-wrapper { border: 1px solid #ddd; border-radius: 4px; overflow: hidden; margin-bottom: 1rem; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .access-img-wrapper:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(0,0,0,0.12); }
+        .access-img-wrapper img { width: 100%; height: auto; display: block; }
+        .access-img-caption { padding: 0.75rem; font-size: 0.8rem; color: #9c9287; background: #fdfcf9; border-top: 1px solid #ddd; }
+        .accordion-item summary { cursor: pointer; list-style: none; list-style-type: none !important; -webkit-appearance: none; transition: transform 0.3s ease, box-shadow 0.3s ease; width: 100%; margin: 0; padding: 0; }
+        .accordion-item summary > * { pointer-events: none; }
+        .accordion-item summary::-webkit-details-marker { display: none !important; }
+        .accordion-item summary::marker { display: none !important; }
+        /* アコーディオン統一スタイリング（解決法3を適用） */
+        .warning-box summary, .notice-box summary, .bank-box summary { display: block; position: relative; padding-right: 7rem; }
+        .accordion-title { margin-bottom: 0.25rem; }
+        .accordion-title::after { position: absolute; top: 0; right: 0; margin: 0; }
+        .accordion-hint, .accordion-hint-notice, .accordion-hint-info { display: block; margin-left: 0; }
         .accordion-item summary::-webkit-details-marker { display: none; }
+        .accordion-item summary::-moz-list-bullet { display: none; }
         .accordion-item summary::marker { display: none; }
-        .accordion-title {
-            font-weight: 600;
-            font-size: 0.9rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .accordion-title::after {
-            content: "▼ 詳細を見る";
-            font-size: 0.72rem;
-            font-weight: 400;
-            color: #9a7c3f;
-            white-space: nowrap;
-            margin-left: 1rem;
-        }
-        details[open] .accordion-title::after {
-            content: "▲ 閉じる";
-        }
-        .accordion-hint {
-            font-size: 0.8rem;
-            color: #9b2020;
-            font-weight: 500;
-            margin: 0;
-        }
-        .accordion-hint-notice {
-            font-size: 0.8rem;
-            color: #7a5a1a;
-            font-weight: 500;
-            margin: 0;
-        }
-        .accordion-hint-info {
-            font-size: 0.8rem;
-            color: #2d3f6b;
-            font-weight: 500;
-            margin: 0;
-        }
-        .accordion-body {
-            margin-top: 0.75rem;
-            padding-top: 0.75rem;
-            border-top: 1px solid rgba(0, 0, 0, 0.1);
-        }
-        @media print {
-            details > .accordion-body { display: block !important; }
-        }
-
-        /* ── Tabs ── */
-        .tab-button {
-            font-size: 0.9rem;
-            transition: all 0.2s ease;
-        }
-        .tab-button.active {
-            color: #1a2744;
-            border-bottom-color: #9a7c3f !important;
-            border-bottom-width: 2px;
-            font-weight: 600;
-        }
-
-        /* ── Footer ── */
-        footer {
-            background: #13203a;
-            border-top: 3px solid #9a7c3f;
-        }
-        .footer-heading {
-            font-family: 'Hiragino Mincho ProN', 'Hiragino Mincho', 'Yu Mincho', 'MS PMincho', serif;
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: #c4a44e;
-            margin-bottom: 0.6rem;
-            letter-spacing: 0.05em;
-        }
-        .footer-body {
-            font-size: 0.85rem;
-            color: rgba(245, 243, 238, 0.72);
-            line-height: 1.9;
-        }
-        .footer-link {
-            color: #c4a44e;
-            text-decoration: none;
-            transition: color 0.15s;
-        }
+        .accordion-item:hover summary { transform: translateX(4px); }
+        .accordion-title { font-weight: bold; display: flex; justify-content: space-between; align-items: center; flex: 1; }
+        .accordion-title::after { content: "▼ 詳細を見る"; font-size: 0.8rem; color: #9a7c3f; }
+        details[open] .accordion-title::after { content: "▲ 閉じる"; }
+        .accordion-hint { font-size: 0.85rem; color: #9b2020; font-weight: 500; margin: 0; margin-left: 1rem; }
+        .accordion-hint-notice { font-size: 0.85rem; color: #7a5a1a; font-weight: 500; margin: 0; margin-left: 1rem; }
+        .accordion-hint-info { font-size: 0.85rem; color: #2d3f6b; font-weight: 500; margin: 0; margin-left: 1rem; }
+        .accordion-body { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #ddd; }
+        .geolocation-container { margin-bottom: 1.5rem; }
+        #geo-message { margin-top: 0.75rem; padding: 0.75rem 1rem; background: #fef8ec; border-left: 4px solid #d4a942; border-radius: 4px; font-size: 0.875rem; }
+        #geo-message.error { background: #fdf4f4; border-left-color: #9b2020; }
+        .fallback-btn { margin-top: 0.75rem; display: inline-block; background: #6b7a9a; color: white; padding: 10px 20px; border-radius: 4px; text-decoration: none; font-size: 0.9rem; transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease; }
+        .fallback-btn:hover { background: #7a8fb0; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(107,122,154,0.3); }
+        .tab-list { display: flex; border-bottom: 1px solid #ddd; margin-bottom: 1.5rem; }
+        .tab-button { padding: 12px 20px; border: none; background: none; cursor: pointer; border-bottom: 2px solid transparent; transition: color 0.2s ease, border-bottom-color 0.2s ease; }
+        .tab-button:hover { color: #1a2744; }
+        .tab-button.active { color: #1a2744; border-bottom-color: #9a7c3f; font-weight: bold; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .schedule-day { border: 1px solid #ddd; border-top: 4px solid #1a2744; border-radius: 4px; overflow: hidden; margin-bottom: 1.5rem; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .schedule-day:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(0,0,0,0.12); }
+        .schedule-day-header { background: #1a2744; color: white; padding: 12px 20px; font-weight: bold; }
+        .schedule-row { display: flex; padding: 12px 20px; border-bottom: 1px solid #eee; align-items: baseline; gap: 1.5rem; }
+        .schedule-row:last-child { border-bottom: none; }
+        .schedule-time { font-size: 0.9rem; color: #999; min-width: 100px; }
+        .bank-box { background: #f3f5f9; border-left: 4px solid #1a2744; padding: 1.5rem; border-radius: 4px; margin-top: 1.5rem; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .bank-box:hover { transform: translateX(4px); box-shadow: 0 4px 12px rgba(26,39,68,0.15); }
+        .bank-label { font-size: 0.8rem; font-weight: bold; color: #9a7c3f; margin-bottom: 0.5rem; letter-spacing: 0.1em; }
+        
+        /* Footer */
+        footer { background: #13203a; color: #f5eed9; padding: 3rem 0 2rem; }
+        .footer-grid { display: grid; gap: 2rem; }
+        @media (min-width: 768px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+        .footer-heading { font-weight: bold; color: #c4a44e; margin-bottom: 1rem; }
+        .footer-link { color: #c4a44e; text-decoration: none; }
         .footer-link:hover { color: #f5eed9; }
-
-        /* ── Navigation inline styles ── */
-        nav {
-            background: white;
-            border-bottom: 1px solid #e8e4dd;
-        }
-        #mobile-menu {
-            border-color: #e8e4dd;
-        }
+        
+        /* Responsive */
+        @media (max-width: 767px) { .grid-cols-2 { grid-template-columns: 1fr; } .hero { padding: 120px 0 80px; } }
     </style>
 </head>
 <body>
     <a href="#main-content" class="skip-link">本文へスキップ</a>
-
+    
     <!-- Navigation -->
-    <nav class="fixed top-0 w-full shadow-sm z-50">
-        <div class="max-w-6xl mx-auto px-4 md:px-6">
-            <div class="flex justify-between items-center h-16">
-                <div class="nav-brand">第38回 環動昆年次大会</div>
-                <div class="hidden md:flex items-center space-x-7">
-                    <a href="#overview" class="nav-link">概要</a>
-                    <a href="#schedule" class="nav-link">日程</a>
-                    <a href="#program" class="nav-link">プログラム</a>
-                    <a href="#registration" class="nav-link">申込・参加費</a>
-                    <a href="#presentation" class="nav-link">発表方法</a>
-                    <a href="#access" class="nav-link">アクセス</a>
-                </div>
-                <button class="md:hidden p-2 text-slate-500" id="menu-btn" aria-label="メニューを開く">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-                    </svg>
-                </button>
+    <nav>
+        <div class="max-w nav-header">
+            <div class="nav-brand">第38回 環動昆年次大会</div>
+            <div class="nav-links" id="nav-links">
+                <a href="#overview" class="nav-link">大会概要</a>
+                <a href="#schedule" class="nav-link">日程</a>
+                <a href="#program" class="nav-link">プログラム</a>
+                <a href="#registration" class="nav-link">参加・講演申込</a>
+                <a href="#presentation" class="nav-link">発表方法</a>
+                <a href="#access" class="nav-link">会場・アクセス</a>
             </div>
+            <button id="menu-btn" aria-label="メニューを開く">
+                ☰
+            </button>
         </div>
-        <div class="hidden md:hidden bg-white border-t" id="mobile-menu">
-            <div class="max-w-6xl mx-auto px-4 py-3 space-y-1">
-                <a href="#overview" class="mobile-link">概要</a>
+        <div id="mobile-menu">
+            <div class="max-w" style="padding: 1rem;">
+                <a href="#overview" class="mobile-link">大会概要</a>
                 <a href="#schedule" class="mobile-link">日程</a>
                 <a href="#program" class="mobile-link">プログラム</a>
-                <a href="#registration" class="mobile-link">申込・参加費</a>
+                <a href="#registration" class="mobile-link">参加・講演申込</a>
                 <a href="#presentation" class="mobile-link">発表方法</a>
-                <a href="#access" class="mobile-link">アクセス</a>
+                <a href="#access" class="mobile-link">会場・アクセス</a>
             </div>
         </div>
     </nav>
-
+    
     <!-- Hero -->
     <header class="hero">
-        <div class="max-w-6xl mx-auto px-4 md:px-6 relative z-10 text-center">
-            <div style="display: inline-flex; align-items: baseline; gap: 0.1em; margin-bottom: 1rem;">
-                <span style="font-family: 'Hiragino Mincho ProN', 'Hiragino Mincho', 'Yu Mincho', 'MS PMincho', serif; font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; color: #c4a44e; line-height: 1; letter-spacing: 0.02em;">第</span>
-                <span style="font-family: 'Hiragino Mincho ProN', 'Hiragino Mincho', 'Yu Mincho', 'MS PMincho', serif; font-size: clamp(3.5rem, 10vw, 6.5rem); font-weight: 700; color: #c4a44e; line-height: 1; letter-spacing: -0.02em;">38</span>
-                <span style="font-family: 'Hiragino Mincho ProN', 'Hiragino Mincho', 'Yu Mincho', 'MS PMincho', serif; font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; color: rgba(196,164,78,0.8); letter-spacing: 0.05em;">回</span>
+        <div class="max-w">
+            <div style="font-size: 5rem; font-weight: bold; color: #c4a44e; line-height: 1; font-family: serif;">
+                <span style="font-size: 3rem;">第</span>38<span style="font-size: 3rem;">回</span>
             </div>
-            <h1 class="hero-title">日本環境動物昆虫学会<br>年次大会</h1>
+            <h1>日本環境動物昆虫学会<br>年次大会</h1>
             <p class="hero-meta">2026年11月14日（土）〜 11月15日（日）</p>
-            <p class="hero-venue">関西学院大学 西宮上ケ原キャンパス（対面開催）</p>
-            <div>
-                <span class="hero-badge">市民公開シンポジウムのみオンライン併用</span>
-            </div>
+            <p style="font-size: 1rem; color: rgba(255,255,255,0.8); margin-bottom: 1.5rem;">関西学院大学 西宮上ケ原キャンパス（対面開催）</p>
+            <span class="hero-badge">市民公開シンポジウムのみオンライン併用</span>
         </div>
     </header>
-
-    <main id="main-content" class="max-w-6xl mx-auto px-4 md:px-6">
-
+    
+    <main id="main-content" class="max-w">
+        
         <!-- Overview -->
-        <section id="overview" class="section-padding" style="border-bottom: 1px solid #ddd8ce;">
+        <section id="overview" class="section-padding">
             <h2 class="section-heading">大会概要</h2>
             <div class="card">
-                <div class="grid md:grid-cols-3 gap-6 md:gap-8">
+                <div class="grid grid-cols-3">
                     <div>
                         <p class="data-label">会期</p>
                         <p>2026年11月14日（土）〜15日（日）</p>
@@ -568,146 +192,91 @@
                         <p>江田慧子（関西学院大学）</p>
                     </div>
                 </div>
-                <div class="notice-box" style="margin-top: 1.75rem;">
+                <div class="notice-box">
                     ※ 現地にて対面の開催となりますが、14日開催の市民公開シンポジウムのみオンラインでも配信します。
                 </div>
             </div>
         </section>
-
+        
         <!-- Schedule -->
-        <section id="schedule" class="section-padding" style="border-bottom: 1px solid #ddd8ce;">
+        <section id="schedule" class="section-padding">
             <h2 class="section-heading">日程（予定案）</h2>
-            <div class="space-y-5">
-
-                <!-- Day 0 -->
-                <div class="schedule-day pre-event">
+            <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                <div class="schedule-day" style="border-top-color: #6b7a9a;">
                     <div class="schedule-day-header">11月13日（金）</div>
-                    <div class="schedule-day-sub">会場：関西学院大学梅田キャンパスおよびオンライン併用</div>
+                    <div style="background: #f3f5f9; padding: 12px 20px; font-size: 0.85rem; color: #9a7c3f;">会場：関西学院大学梅田キャンパスおよびオンライン併用</div>
                     <div class="schedule-row">
                         <span class="schedule-time">17:00 – 18:30</span>
                         <span>理事会・評議員会合同開催</span>
                     </div>
                 </div>
-
-                <!-- Day 1 -->
                 <div class="schedule-day">
                     <div class="schedule-day-header">11月14日（土）</div>
-                    <div class="schedule-day-sub">会場：関西学院大学 西宮上ケ原キャンパス</div>
-                    <div class="schedule-row">
-                        <span class="schedule-time">08:30 –</span>
-                        <span>受付開始</span>
-                    </div>
-                    <div class="schedule-row">
-                        <span class="schedule-time">09:30 – 12:00</span>
-                        <span>口頭発表（賞対象者）</span>
-                    </div>
-                    <div class="schedule-row highlight">
-                        <span class="schedule-time">10:00 – 16:00</span>
-                        <span>ポスター発表（コアタイム 12:15 – 13:15）</span>
-                    </div>
-                    <div class="schedule-row">
-                        <span class="schedule-time">13:30 – 16:00</span>
-                        <span>市民公開シンポジウム（オンライン併用）</span>
-                    </div>
-                    <div class="schedule-row">
-                        <span class="schedule-time">16:10 – 17:00</span>
-                        <span>活動報告会</span>
-                    </div>
-                    <div class="schedule-row">
-                        <span class="schedule-time">17:00 – 18:00</span>
-                        <span>学会賞・奨励賞講演（予定）</span>
-                    </div>
-                    <div class="schedule-row highlight">
-                        <span class="schedule-time">18:30 – 20:00</span>
-                        <span>懇親会（関西学院会館 ポプラ）</span>
-                    </div>
+                    <div style="background: #f3f5f9; padding: 12px 20px; font-size: 0.85rem; color: #9a7c3f;">会場：関西学院大学 西宮上ケ原キャンパス</div>
+                    <div class="schedule-row"><span class="schedule-time">08:30 –</span><span>受付開始</span></div>
+                    <div class="schedule-row"><span class="schedule-time">09:30 – 12:00</span><span>口頭発表（賞対象者）</span></div>
+                    <div class="schedule-row" style="background: #f5eed9;"><span class="schedule-time">10:00 – 16:00</span><span>ポスター発表（コアタイム 12:15 – 13:15）</span></div>
+                    <div class="schedule-row"><span class="schedule-time">13:30 – 16:00</span><span>市民公開シンポジウム（オンライン併用）</span></div>
+                    <div class="schedule-row"><span class="schedule-time">16:10 – 17:00</span><span>活動報告会</span></div>
+                    <div class="schedule-row"><span class="schedule-time">17:00 – 18:00</span><span>学会賞・奨励賞講演（予定）</span></div>
+                    <div class="schedule-row" style="background: #f5eed9;"><span class="schedule-time">18:30 – 20:00</span><span>懇親会（関西学院会館 ポプラ）</span></div>
                 </div>
-
-                <!-- Day 2 -->
                 <div class="schedule-day">
                     <div class="schedule-day-header">11月15日（日）</div>
-                    <div class="schedule-day-sub">会場：関西学院大学 西宮上ケ原キャンパス</div>
-                    <div class="schedule-row">
-                        <span class="schedule-time">09:30 – 12:00</span>
-                        <span>口頭発表（賞対象者以外）</span>
-                    </div>
+                    <div style="background: #f3f5f9; padding: 12px 20px; font-size: 0.85rem; color: #9a7c3f;">会場：関西学院大学 西宮上ケ原キャンパス</div>
+                    <div class="schedule-row"><span class="schedule-time">09:30 – 12:00</span><span>口頭発表（賞対象者以外）</span></div>
                 </div>
-
             </div>
         </section>
-
+        
         <!-- Program -->
-        <section id="program" class="section-padding" style="border-bottom: 1px solid #ddd8ce;">
+        <section id="program" class="section-padding">
             <h2 class="section-heading">プログラム</h2>
-            <div class="space-y-10">
-
-                <!-- Public Symposium -->
+            <div style="display: flex; flex-direction: column; gap: 3rem;">
                 <div>
-                    <h3 class="text-xl font-semibold text-gray-800 mb-4" style="font-family: 'Noto Serif JP', serif; color: #1a2744; border-bottom: 2px solid #9a7c3f; padding-bottom: 0.5rem;">市民公開シンポジウム</h3>
+                    <h3 style="font-size: 1.5rem; color: #1a2744; margin-bottom: 1.5rem; border-bottom: 2px solid #9a7c3f; padding-bottom: 0.5rem;">市民公開シンポジウム</h3>
                     <div class="card">
-                        <div class="text-center py-10">
-                            <p class="text-gray-600 mb-2">近い将来にプログラムを掲載します。</p>
-                            <div class="inline-flex items-center justify-center px-4 py-2 bg-gray-100 text-gray-500 rounded-lg">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-                                </svg>
-                                工事中
+                        <div style="text-align: center; padding: 4rem 2rem;">
+                            <p style="color: #666; margin-bottom: 1rem;">近い将来にプログラムを掲載します。</p>
+                            <div style="display: inline-flex; align-items: center; padding: 12px 20px; background: #f5f5f5; border-radius: 6px; color: #666;">
+                                ⏳ 工事中
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <!-- General Presentations -->
                 <div>
-                    <h3 class="text-xl font-semibold text-gray-800 mb-4" style="font-family: 'Hiragino Mincho ProN', 'Hiragino Mincho', 'Yu Mincho', 'MS PMincho', serif; color: #1a2744; border-bottom: 2px solid #9a7c3f; padding-bottom: 0.5rem;">一般講演</h3>
-                    
-                    <!-- Tabs -->
-                    <div class="border-b border-gray-300 mb-6" role="tablist" aria-label="発表プログラムタブ">
-                        <div class="flex space-x-2">
-                            <button id="tab-oral1" class="tab-button px-4 py-2 font-medium text-gray-600 border-b-2 border-transparent hover:text-gray-800 transition-colors" data-tab="oral1" role="tab" aria-selected="true" aria-controls="tab-content-oral1">口頭発表 1日目</button>
-                            <button id="tab-oral2" class="tab-button px-4 py-2 font-medium text-gray-600 border-b-2 border-transparent hover:text-gray-800 transition-colors" data-tab="oral2" role="tab" aria-selected="false" aria-controls="tab-content-oral2">口頭発表 2日目</button>
-                            <button id="tab-poster" class="tab-button px-4 py-2 font-medium text-gray-600 border-b-2 border-transparent hover:text-gray-800 transition-colors" data-tab="poster" role="tab" aria-selected="false" aria-controls="tab-content-poster">ポスター発表</button>
-                        </div>
+                    <h3 style="font-size: 1.5rem; color: #1a2744; margin-bottom: 1.5rem; border-bottom: 2px solid #9a7c3f; padding-bottom: 0.5rem;">一般講演</h3>
+                    <div class="tab-list" role="tablist">
+                        <button class="tab-button active" data-tab="oral1" role="tab">口頭発表 1日目</button>
+                        <button class="tab-button" data-tab="oral2" role="tab">口頭発表 2日目</button>
+                        <button class="tab-button" data-tab="poster" role="tab">ポスター発表</button>
                     </div>
-
-                    <!-- Tab Content -->
-                    <div id="tab-content-oral1" class="tab-content" role="tabpanel" aria-labelledby="tab-oral1">
+                    <div id="tab-oral1" class="tab-content active" role="tabpanel">
                         <div class="card">
-                            <div class="text-center py-10">
-                                <p class="text-gray-600 mb-2">11月14日（土）の口頭発表プログラム</p>
-                                <div class="inline-flex items-center justify-center px-4 py-2 bg-gray-100 text-gray-500 rounded-lg">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-                                    </svg>
-                                    工事中
+                            <div style="text-align: center; padding: 4rem 2rem;">
+                                <p style="color: #666; margin-bottom: 1rem;">11月14日（土）の口頭発表プログラム</p>
+                                <div style="display: inline-flex; align-items: center; padding: 12px 20px; background: #f5f5f5; border-radius: 6px; color: #666;">
+                                    ⏳ 工事中
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <div id="tab-content-oral2" class="tab-content" role="tabpanel" aria-labelledby="tab-oral2" style="display: none;">
+                    <div id="tab-oral2" class="tab-content" role="tabpanel">
                         <div class="card">
-                            <div class="text-center py-10">
-                                <p class="text-gray-600 mb-2">11月15日（日）の口頭発表プログラム</p>
-                                <div class="inline-flex items-center justify-center px-4 py-2 bg-gray-100 text-gray-500 rounded-lg">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-                                    </svg>
-                                    工事中
+                            <div style="text-align: center; padding: 4rem 2rem;">
+                                <p style="color: #666; margin-bottom: 1rem;">11月15日（日）の口頭発表プログラム</p>
+                                <div style="display: inline-flex; align-items: center; padding: 12px 20px; background: #f5f5f5; border-radius: 6px; color: #666;">
+                                    ⏳ 工事中
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <div id="tab-content-poster" class="tab-content" role="tabpanel" aria-labelledby="tab-poster" style="display: none;">
+                    <div id="tab-poster" class="tab-content" role="tabpanel">
                         <div class="card">
-                            <div class="text-center py-10">
-                                <p class="text-gray-600 mb-2">ポスター発表プログラム（11月14日）</p>
-                                <div class="inline-flex items-center justify-center px-4 py-2 bg-gray-100 text-gray-500 rounded-lg">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-                                    </svg>
-                                    工事中
+                            <div style="text-align: center; padding: 4rem 2rem;">
+                                <p style="color: #666; margin-bottom: 1rem;">ポスター発表プログラム（11月14日）</p>
+                                <div style="display: inline-flex; align-items: center; padding: 12px 20px; background: #f5f5f5; border-radius: 6px; color: #666;">
+                                    ⏳ 工事中
                                 </div>
                             </div>
                         </div>
@@ -715,98 +284,88 @@
                 </div>
             </div>
         </section>
-
-        <section id="registration" class="section-padding" style="border-bottom: 1px solid #ddd8ce;">
+        
+        <section id="registration" class="section-padding">
             <h2 class="section-heading">参加・講演申込</h2>
-            <div class="card" style="margin-bottom: 1.5rem;">
-
+            <div class="card">
                 <p style="margin-bottom: 1.5rem;">
-                    <span class="data-label" style="display: inline; margin-right: 0.5rem;">申込締切</span>
+                    <span class="data-label">申込締切</span>
                     <span class="deadline">2026年9月30日（水）</span>
                 </p>
-
-                <div class="overflow-x-auto" style="margin-bottom: 1.5rem;">
-                    <table class="fee-table">
+                <div style="overflow-x: auto; margin-bottom: 1.5rem;">
+                    <table>
                         <thead>
                             <tr>
                                 <th>項目</th>
                                 <th>区分</th>
-                                <th class="col-highlight" style="text-align: center;">事前申込（9/30まで）</th>
-                                <th style="text-align: center;">当日 / 直前申込（10/1以降）</th>
+                                <th style="background: #9a7c3f;">事前申込（9/30まで）</th>
+                                <th>当日 / 直前申込（10/1以降）</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td rowspan="2" style="font-weight: 500;">大会参加費</td>
+                                <td rowspan="2" style="font-weight: bold;">大会参加費</td>
                                 <td>一般会員</td>
-                                <td style="text-align: center;"><span class="fee-amount">5,000円</span></td>
-                                <td style="text-align: center;">6,000円</td>
+                                <td style="font-weight: bold; color: #1a2744;">5,000円</td>
+                                <td>6,000円</td>
                             </tr>
                             <tr>
                                 <td>非会員</td>
-                                <td style="text-align: center;"><span class="fee-amount">7,000円</span></td>
-                                <td style="text-align: center;">8,000円</td>
+                                <td style="font-weight: bold; color: #1a2744;">7,000円</td>
+                                <td>8,000円</td>
                             </tr>
                             <tr>
-                                <td style="font-weight: 500;">大会参加費（学生）</td>
+                                <td style="font-weight: bold;">大会参加費（学生）</td>
                                 <td>会員・非会員問わず</td>
-                                <td style="text-align: center;"><span class="fee-amount">2,000円</span></td>
-                                <td style="text-align: center;">3,000円</td>
+                                <td style="font-weight: bold; color: #1a2744;">2,000円</td>
+                                <td>3,000円</td>
                             </tr>
                             <tr>
-                                <td style="font-weight: 500;">懇親会費</td>
+                                <td style="font-weight: bold;">懇親会費</td>
                                 <td>一般</td>
-                                <td style="text-align: center;"><span class="fee-amount">7,000円</span></td>
-                                <td style="text-align: center;">8,000円</td>
+                                <td style="font-weight: bold; color: #1a2744;">7,000円</td>
+                                <td>8,000円</td>
                             </tr>
                             <tr>
-                                <td style="font-weight: 500;">懇親会費（学生）</td>
+                                <td style="font-weight: bold;">懇親会費（学生）</td>
                                 <td>学生</td>
-                                <td style="text-align: center;"><span class="fee-amount">3,000円</span></td>
-                                <td style="text-align: center;">4,000円</td>
+                                <td style="font-weight: bold; color: #1a2744;">3,000円</td>
+                                <td>4,000円</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-
-                <ul style="font-size: 0.875rem; color: #6b6355; line-height: 1.85; list-style: none; padding: 0; margin-bottom: 1.5rem;">
+                <ul style="font-size: 0.9rem; color: #666; line-height: 1.8; list-style: none; padding: 0; margin-bottom: 1.5rem;">
                     <li>※ 市民公開シンポジウムのみの参加は無料です。</li>
                     <li>※ 納入された大会参加費は参加を取り消されても返却できません。</li>
-                    <li class="deadline" style="margin-top: 0.5rem;">重要：お振込みは必ず「個人名」で行ってください。法人名義では入金確認ができません。</li>
+                    <li class="deadline">重要：お振込みは必ず「個人名」で行ってください。法人名義では入金確認ができません。</li>
                 </ul>
-
-                <a href="https://forms.gle/L6AMw2N5WeoFiorv9" target="_blank" rel="noopener" class="btn-primary" style="width: 100%; box-sizing: border-box;">
+                <a href="https://forms.gle/L6AMw2N5WeoFiorv9" target="_blank" rel="noopener" class="btn-primary" style="width: 100%; text-align: center; box-sizing: border-box;">
                     参加申込みフォーム
                 </a>
             </div>
-
-            <!-- Bank transfer -->
             <div class="bank-box">
                 <p class="bank-label">大会参加費 振込先</p>
                 <p>三菱UFJ銀行 信濃橋支店　普通預金　0264018</p>
                 <p>口座名義：ﾆﾎﾝｶﾝｷｮｳﾄﾞｳﾌﾞﾂｺﾝﾁｭｳｶﾞｯｶｲ</p>
             </div>
         </section>
-
-        <!-- Presentation -->
-        <section id="presentation" class="section-padding" style="border-bottom: 1px solid #ddd8ce;">
+        
+        <section id="presentation" class="section-padding">
             <h2 class="section-heading">発表方法・要旨</h2>
-
-            <div class="grid md:grid-cols-2 gap-6" style="margin-bottom: 1.5rem;">
-                <!-- Oral -->
+            <div class="grid grid-cols-2">
                 <div class="pres-card">
                     <h3>口頭発表</h3>
-                    <ul style="padding: 0;">
+                    <ul>
                         <li>1題15分（質疑応答含む）</li>
                         <li>液晶プロジェクタ（PowerPoint）使用</li>
                         <li><strong>パソコン持参必須</strong>（ウイルス対策のため）</li>
                         <li>次演者への切り替えを質疑中に行うため再投影不可</li>
                     </ul>
                 </div>
-                <!-- Poster -->
                 <div class="pres-card">
                     <h3>ポスター発表</h3>
-                    <ul style="padding: 0;">
+                    <ul>
                         <li>パネルサイズ：縦180cm × 横120cm</li>
                         <li>推奨ポスターサイズ：A0以内</li>
                         <li><strong>画鋲は各自でご持参</strong>ください</li>
@@ -814,203 +373,229 @@
                     </ul>
                 </div>
             </div>
-
-            <!-- Abstract submission -->
-            <div class="info-card" style="margin-bottom: 1.5rem;">
+            <div class="info-card" style="margin-top: 2rem;">
                 <h3>発表要旨の提出</h3>
-                <p style="font-size: 0.875rem; margin-bottom: 0.75rem;">A4判1ページ以内で作成し、電子メールにて事務局へお送りください。</p>
-                <p style="margin-bottom: 1rem;">
-                    <span class="data-label" style="display: inline; margin-right: 0.5rem;">提出締切</span>
+                <p style="font-size: 0.9rem; margin-bottom: 1rem;">A4判1ページ以内で作成し、電子メールにて事務局へお送りください。</p>
+                <p>
+                    <span class="data-label">提出締切</span>
                     <span class="deadline">2026年10月16日（金）</span>
                 </p>
-                <a href="kdk_abstract_template.docx" download class="link-academic" style="font-size: 0.875rem; display: inline-flex; align-items: center; gap: 0.4rem;">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="width: 1rem; height: 1rem; flex-shrink: 0;">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a2 2 0 002 2h12a2 2 0 002-2v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                    </svg>
+                <a href="kdk_abstract_template.docx" download class="link-academic">
                     要旨テンプレートをダウンロード（Word形式）
                 </a>
             </div>
-
-            <!-- Awards -->
-            <div class="info-card">
+            <div class="info-card" style="margin-top: 1.5rem;">
                 <h3>最優秀発表賞</h3>
-                <p style="font-size: 0.875rem; line-height: 1.9;">
+                <p style="font-size: 0.9rem;">
                     口頭およびポスター発表から最優秀発表賞を選考します。対象者は本会会員で、2026年4月1日現在で30歳未満の方です。希望者は申込時に生年月日をご記入ください。学生年会費は3,000円です。
                 </p>
             </div>
         </section>
-
-        <!-- Access -->
+        
         <section id="access" class="section-padding">
             <h2 class="section-heading">会場案内・アクセス</h2>
             <div class="card">
-                <div class="grid md:grid-cols-2 gap-8 md:gap-10 items-start">
-
-                    <!-- Left: Address & Access info -->
+                <div class="grid grid-cols-2">
                     <div>
                         <p class="data-label">会場</p>
-                        <p style="font-weight: 500; margin-bottom: 0.25rem;">関西学院大学（西宮上ケ原キャンパス）</p>
-                        <p style="font-size: 0.875rem; color: #6b6355; margin-bottom: 1.5rem;">〒662-8501 兵庫県西宮市上ケ原一番町1-155</p>
-
+                        <p style="font-weight: bold; margin-bottom: 0.5rem;">関西学院大学（西宮上ケ原キャンパス）</p>
+                        <p style="font-size: 0.9rem; color: #666;">〒662-8501 兵庫県西宮市上ケ原一番町1-155</p>
                         <p class="data-label">交通アクセス</p>
-<p style="font-size: 0.875rem; margin-bottom: 0.75rem;">
-                             阪急西宮北口駅またはJR西宮駅から阪急バス甲東園駅行き「関西学院前」で降りるのが便利です。
-                         </p>
-                         <a href="https://www.kwansei.ac.jp/access/" target="_blank" rel="noopener" class="link-academic" style="font-size: 0.875rem; display: inline-flex; align-items: center; gap: 0.4rem; margin-bottom: 1.5rem;">
-                             大学公式サイトのアクセス案内
-                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="width: 0.9rem; height: 0.9rem; flex-shrink: 0;">
-                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                             </svg>
-                         </a>
-
-<details class="warning-box accordion-item" style="margin-bottom: 1.5rem;">
-                               <summary>
-                                   <p class="accordion-title">宿泊についてのご注意</p>
-                                   <p class="accordion-hint">早めのご予約を強くお勧めします</p>
-                               </summary>
-                               <div class="accordion-body">
-                                   11月15日（日）は神戸マラソンおよびホームカミングデーと重複します。神戸市内の宿泊予約が困難になることが予想されますので、<strong>大阪・宝塚・尼崎方面のホテルを早めに予約</strong>されることを強くお勧めします。<br><br>
-                                   原則として、宿泊の斡旋および交通手段の手配は行っておりませんので、各自手配をお願いします。宿泊料や乗車券、航空券などのキャンセル料は一切負担できませんので、直前までキャンセル料が発生しないプラン、交通手段をお勧めします。
-                               </div>
-                           </details>
-                           <details class="notice-box accordion-item" style="margin-bottom: 1.5rem;">
-                               <summary>
-                                   <p class="accordion-title">【特例】宿泊協力ホテルのご案内</p>
-                                   <p class="accordion-hint-notice">近隣ホテルの宿泊希望を受け付けます</p>
-                               </summary>
-                               <div class="accordion-body">
-                                    今大会の特例として、11月14日（土）の宿泊分に限り<a href="http://nakasumikadan.com/" target="_blank" rel="noopener"><strong>中寿美花壇ホテル</strong></a>のツインルームと大部屋を一定数確保しております。<br><br>
-                                    <strong>宿泊料金</strong>： 7,000〜10,000円（お部屋のタイプや人数により異なります）<br>
-                                    <strong>朝食代</strong>： 1,100円（別途）
-                                    <div class="notice-box" style="margin-top: 0.75rem; border-left-width: 3px;">
-                                        宿泊をご希望の方は、<a href="https://forms.gle/L6AMw2N5WeoFiorv9" class="link-academic">申込みフォーム</a>よりあわせてお申し込みください。なお、宿泊代金は現地にて精算となります。ホテルより領収書の発行も可能です。<br><br>
-                                        <small>※客室数には限りがあるため、ご希望に添えない場合もございます。あらかじめご了承ください。</small>
-                                    </div>
-                               </div>
-                           </details>
-
-                          <details class="kids-box accordion-item" style="margin-bottom: 1.5rem;">
-                              <summary>
-                                  <p class="accordion-title">キッズルーム（親子休憩スペース）のご案内</p>
-                                  <p class="accordion-hint-info">事前申し込みが必要です</p>
-                              </summary>
-                              <div class="accordion-body">
-                                  <p style="font-size: 0.875rem; margin-bottom: 0.75rem;">
-                                     第38回年次大会では初めての試みとして、参加者とお子様が一緒に休憩や軽食をとれるキッズルームをご用意します。
-                                     おもちゃや絵本などをご用意しておりますので、ご自由にご利用ください。
-                                  </p>
-                                   <ul style="font-size: 0.8rem; list-style: none; padding: 0; margin: 0.5rem 0 1rem 0; color: #2d3f6b;">
-                                      <li>• スペースの管理: 関西学院大学教育学部の教員・保育学生</li>
-                                      <li>• 見守り・ケア: 保護者様の自己責任でお願いいたします</li>
-                                      <li>• 費用: 無料</li>
-                                  </ul>
-                                  <div class="kids-box" style="border-left-width: 3px;">
-                                      <strong>ご利用予定の参加者様</strong><br>
-                                      参加申込時（<a href="https://forms.gle/L6AMw2N5WeoFiorv9" class="link-academic">申込みフォーム</a>）に、
-                                      <strong>お子様の人数・年齢・利用日（土/日/両方）</strong>をご入力ください。
-                                  </div>
-                              </div>
-                          </details>
-
+                        <p style="font-size: 0.9rem; margin-bottom: 1rem;">
+                            阪急西宮北口駅またはJR西宮駅から阪急バス甲東園駅行き「関西学院前」で降りるのが便利です。
+                        </p>
+                        <div class="geolocation-container">
+                            <button id="route-btn" class="btn-primary" style="width: 100%;">
+                                📍 現在地からアクセスを表示
+                            </button>
+                            <div id="geo-message" style="display: none;"></div>
+                        </div>
+                        <a href="https://www.kwansei.ac.jp/access/" target="_blank" rel="noopener" class="link-academic">
+                            大学公式サイトのアクセス案内 →
+                        </a>
+                        <details class="warning-box">
+                            <summary>
+                                <div class="accordion-title">宿泊についてのご注意</div>
+                                <div class="accordion-hint">早めのご予約を強くお勧めします</div>
+                            </summary>
+                            <div class="accordion-body">
+                                11月15日（日）は神戸マラソンおよびホームカミングデーと重複します。神戸市内の宿泊予約が困難になることが予想されますので、<strong>大阪・宝塚・尼崎方面のホテルを早めに予約</strong>されることを強くお勧めします。<br><br>
+                                原則として、宿泊の斡旋および交通手段の手配は行っておりませんので、各自手配をお願いします。宿泊料や乗車券、航空券などのキャンセル料は一切負担できませんので、直前までキャンセル料が発生しないプラン、交通手段をお勧めします。
+                            </div>
+                        </details>
+                        <details class="notice-box">
+                            <summary>
+                                <div class="accordion-title">【特例】宿泊協力ホテルのご案内</div>
+                                <div class="accordion-hint-notice">近隣ホテルの宿泊希望を受け付けます</div>
+                            </summary>
+                            <div class="accordion-body">
+                                今大会の特例として、11月14日（土）の宿泊分に限り<a href="http://nakasumikadan.com/" target="_blank" rel="noopener"><strong>中寿美花壇ホテル</strong></a>のツインルームと大部屋を一定数確保しております。<br><br>
+                                <strong>宿泊料金</strong>： 7,000〜10,000円（お部屋のタイプや人数により異なります）<br>
+                                <strong>朝食代</strong>： 1,100円（別途）
+                                <div class="notice-box">
+                                    宿泊をご希望の方は、<a href="https://forms.gle/L6AMw2N5WeoFiorv9" class="link-academic">申込みフォーム</a>よりあわせてお申し込みください。なお、宿泊代金は現地にて精算となります。ホテルより領収書の発行も可能です。<br><br>
+                                    <small>※客室数には限りがあるため、ご希望に添えない場合もございます。あらかじめご了承ください。</small>
+                                </div>
+                            </div>
+                        </details>
+                        <details class="bank-box" style="border-left-width: 4px;">
+                            <summary>
+                                <div class="accordion-title">キッズルーム（親子休憩スペース）のご案内</div>
+                                <div class="accordion-hint-info">事前申し込みが必要です</div>
+                            </summary>
+                            <div class="accordion-body">
+                                <p style="font-size: 0.9rem; margin-bottom: 1rem;">
+                                    第38回年次大会では初めての試みとして、参加者とお子様が一緒に休憩や軽食をとれるキッズルームをご用意します。
+                                    おもちゃや絵本などをご用意しておりますので、ご自由にご利用ください。
+                                </p>
+                                <ul style="list-style: none; padding: 0; color: #2d3f6b; font-size: 0.85rem;">
+                                    <li>• スペースの管理: 関西学院大学教育学部の教員・保育学生</li>
+                                    <li>• 見守り・ケア: 保護者様の自己責任でお願いいたします</li>
+                                    <li>• 費用: 無料</li>
+                                </ul>
+                                <div class="bank-box" style="border-left-width: 3px;">
+                                    <strong>ご利用予定の参加者様</strong><br>
+                                    参加申込時（<a href="https://forms.gle/L6AMw2N5WeoFiorv9" class="link-academic">申込みフォーム</a>）に、
+                                    <strong>お子様の人数・年齢・利用日（土/日/両方）</strong>をご入力ください。
+                                </div>
+                            </div>
+                        </details>
                     </div>
-
-                    <!-- Right: Maps -->
-                    <div class="space-y-4">
+                    <div style="display: flex; flex-direction: column; gap: 1.5rem;">
                         <figure class="access-img-wrapper">
-                            <img src="campus_map.png" alt="関西学院大学 西宮上ケ原キャンパスマップ" loading="lazy" width="800" height="600">
+                            <img src="campus_map.png" alt="関西学院大学 西宮上ケ原キャンパスマップ" loading="lazy">
                             <figcaption class="access-img-caption">キャンパスマップ（西宮上ケ原）</figcaption>
                         </figure>
                         <figure class="access-img-wrapper">
-                            <img src="access.png" alt="関西学院大学へのアクセスマップ" loading="lazy" width="800" height="600">
+                            <img src="access.png" alt="関西学院大学へのアクセスマップ" loading="lazy">
                             <figcaption class="access-img-caption">アクセスマップ（最寄駅・バス路線）</figcaption>
                         </figure>
                     </div>
-
                 </div>
             </div>
         </section>
-
+        
     </main>
-
+    
     <!-- Footer -->
-    <footer class="py-14">
-        <div class="max-w-6xl mx-auto px-4 md:px-6">
-            <div class="grid md:grid-cols-2 gap-10 md:gap-16">
-                <div>
-                    <p class="footer-heading">学会事務局（事前お問い合わせ）</p>
-                    <div class="footer-body">
-                        <p>〒550-0005 大阪市西区西本町1-11-1 本町セントラルハイツ407</p>
-                        <p>TEL・FAX: 06 (6535) 4684</p>
-                        <p>Email: <a href="mailto:kandoukon@outlook.jp" class="footer-link">kandoukon@outlook.jp</a></p>
-                    </div>
+    <footer>
+        <div class="max-w footer-grid">
+            <div>
+                <p class="footer-heading">学会事務局（事前お問い合わせ）</p>
+                <div style="font-size: 0.9rem; line-height: 1.8;">
+                    <p>〒550-0005 大阪市西区西本町1-11-1 本町セントラルハイツ407</p>
+                    <p>TEL・FAX: 06 (6535) 4684</p>
+                    <p>Email: <a href="mailto:kandoukon@outlook.jp" class="footer-link">kandoukon@outlook.jp</a></p>
                 </div>
-                <div>
-                    <p class="footer-heading">大会事務局（大会当日窓口）</p>
-                    <div class="footer-body">
-                        <p>Email: <a href="mailto:keiko-koda21@kwansei.ac.jp" class="footer-link">keiko-koda21@kwansei.ac.jp</a></p>
-                    </div>
-                    <div style="margin-top: 2.5rem; border-top: 1px solid rgba(196,164,78,0.2); padding-top: 1.5rem;">
-                        <p style="font-size: 0.78rem; color: rgba(245,243,238,0.55); line-height: 1.8;">
-                            本サイトにおける個人情報の取り扱いは、<a href="https://kandoukon.org/images/policy.pdf" target="_blank" rel="noopener" style="color: rgba(196,164,78,0.7); text-decoration: underline; text-underline-offset: 2px;">一般社団法人日本環境動物昆虫学会のプライバシーポリシー</a>に準じます。
-                        </p>
-                        <p style="margin-top: 0.75rem; font-size: 0.78rem; color: rgba(196,164,78,0.45); letter-spacing: 0.06em;">
-                            &copy; 2026 日本環境動物昆虫学会 第38回年次大会
-                        </p>
-                    </div>
+            </div>
+            <div>
+                <p class="footer-heading">大会事務局（大会当日窓口）</p>
+                <div style="font-size: 0.9rem;">
+                    <p>Email: <a href="mailto:keiko-koda21@kwansei.ac.jp" class="footer-link">keiko-koda21@kwansei.ac.jp</a></p>
+                </div>
+                <div style="margin-top: 2rem; border-top: 1px solid rgba(196,164,78,0.3); padding-top: 1.5rem;">
+                    <p style="font-size: 0.85rem; opacity: 0.7; line-height: 1.6;">
+                        本サイトにおける個人情報の取り扱いは、<a href="https://kandoukon.org/images/policy.pdf" target="_blank" rel="noopener" class="footer-link">一般社団法人日本環境動物昆虫学会のプライバシーポリシー</a>に準じます。
+                    </p>
+                    <p style="margin-top: 1rem; font-size: 0.8rem; opacity: 0.6; letter-spacing: 0.05em;">
+                        &copy; 2026 日本環境動物昆虫学会 第38回年次大会
+                    </p>
                 </div>
             </div>
         </div>
     </footer>
-
+    
     <script>
-        const btn = document.getElementById('menu-btn');
-        const menu = document.getElementById('mobile-menu');
-        btn.addEventListener('click', () => menu.classList.toggle('hidden'));
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => menu.classList.add('hidden'));
+        // Mobile menu
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.getElementById('nav-links');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('show');
         });
-
-        // Tab switching function
-        function switchTab(tabName) {
-            document.querySelectorAll('.tab-content').forEach(content => {
-                content.style.display = 'none';
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.remove('show'));
+        });
+        
+        // Tabs
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.tab-button').forEach(button => {
+                button.addEventListener('click', () => {
+                    const tab = button.dataset.tab;
+                    // Hide all tabs
+                    document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
+                    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                    // Show selected
+                    button.classList.add('active');
+                    document.getElementById(`tab-${tab}`).classList.add('active');
+                });
             });
 
-            document.querySelectorAll('.tab-button').forEach(tab => {
-                tab.classList.remove('active');
-                tab.style.borderBottom = '2px solid transparent';
-                tab.setAttribute('aria-selected', 'false');
-            });
+            // Geolocation - Current location to venue
+            const routeBtn = document.getElementById('route-btn');
+            const geoMessage = document.getElementById('geo-message');
+            const venueAddress = '兵庫県西宮市上ケ原一番町1-155';
+            const venueEncoded = encodeURIComponent(venueAddress);
 
-            const selectedContent = document.getElementById('tab-content-' + tabName);
-            if (selectedContent) {
-                selectedContent.style.display = 'block';
-            }
-
-            const selectedTab = document.getElementById('tab-' + tabName);
-            if (selectedTab) {
-                selectedTab.classList.add('active');
-                selectedTab.style.borderBottom = '2px solid #9a7c3f';
-                selectedTab.setAttribute('aria-selected', 'true');
-            }
-        }
-
-        // Initialize tabs
-        document.addEventListener('DOMContentLoaded', function() {
-            const tabButtons = document.querySelectorAll('.tab-button');
-            tabButtons.forEach(button => {
-                const tabName = button.getAttribute('data-tab');
-                if (tabName) {
-                    button.addEventListener('click', function() {
-                        switchTab(tabName);
-                    });
+            routeBtn.addEventListener('click', () => {
+                if (!navigator.geolocation) {
+                    showGeoMessage('お使いのブラウザは位置情報をサポートしていません。', true);
+                    showFallbackButton();
+                    return;
                 }
+
+                routeBtn.disabled = true;
+                routeBtn.textContent = '📍 位置情報を取得中...';
+                geoMessage.style.display = 'none';
+
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        const lat = position.coords.latitude;
+                        const lon = position.coords.longitude;
+                        const mapsUrl = `https://www.google.com/maps/dir/?api=1&origin=${lat},${lon}&destination=${venueEncoded}&travelmode=transit`;
+                        window.open(mapsUrl, '_blank');
+                        routeBtn.disabled = false;
+                        routeBtn.textContent = '📍 現在地からアクセスを表示';
+                    },
+                    (error) => {
+                        let errorMsg = '';
+                        switch (error.code) {
+                            case error.PERMISSION_DENIED:
+                                errorMsg = '位置情報へのアクセスが許可されていません。設定を確認してください。';
+                                break;
+                            case error.POSITION_UNAVAILABLE:
+                                errorMsg = '位置情報を取得できませんでした。';
+                                break;
+                            case error.TIMEOUT:
+                                errorMsg = '位置情報の取得に時間がかかりすぎました。';
+                                break;
+                            default:
+                                errorMsg = 'エラーが発生しました。';
+                        }
+                        showGeoMessage(errorMsg, true);
+                        showFallbackButton();
+                        routeBtn.disabled = false;
+                        routeBtn.textContent = '📍 現在地からアクセスを表示';
+                    },
+                    { timeout: 10000 }
+                );
             });
 
-            const firstTab = document.getElementById('tab-oral1');
-            if (firstTab) {
-                firstTab.classList.add('active');
-                firstTab.style.borderBottom = '2px solid #9a7c3f';
+            function showGeoMessage(message, isError = false) {
+                geoMessage.textContent = message;
+                geoMessage.className = isError ? 'error' : '';
+                geoMessage.style.display = 'block';
+            }
+
+            function showFallbackButton() {
+                const fallbackBtn = document.createElement('a');
+                fallbackBtn.href = `https://www.google.com/maps/dir/?api=1&destination=${venueEncoded}`;
+                fallbackBtn.className = 'fallback-btn';
+                fallbackBtn.textContent = '🗺️ 地図アプリで開く';
+                fallbackBtn.target = '_blank';
+                fallbackBtn.rel = 'noopener';
+                geoMessage.appendChild(document.createElement('br'));
+                geoMessage.appendChild(fallbackBtn);
             }
         });
     </script>
