@@ -5,3 +5,10 @@ tailwind.config.js
 *.zip
 .DS_Store
 .opencode/
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+.env*
+!.env.example
