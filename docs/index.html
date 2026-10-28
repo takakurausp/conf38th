@@ -106,12 +106,27 @@
         .tab-button.active { color: #1a2744; border-bottom-color: #9a7c3f; font-weight: bold; }
         .tab-content { display: none; }
         .tab-content.active { display: block; }
+        /* 一般講演（口頭・ポスター）リスト */
+        .pres-summary { display: flex; flex-wrap: wrap; gap: 0.5rem 2rem; margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid #e8e4dd; font-size: 0.95rem; }
+        .pres-legend { font-size: 0.85rem; color: #555; line-height: 1.7; margin-bottom: 1rem; }
+        .pres-venue { border: 1px solid #e8e4dd; border-radius: 6px; overflow: hidden; background: #fff; }
+        .pres-venue-header { background: #f3f5f9; border-bottom: 1px solid #e8e4dd; padding: 0.75rem 1rem; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0.5rem; color: #1a2744; font-weight: bold; }
+        .pres-venue-body { padding: 1rem; display: flex; flex-direction: column; gap: 0.75rem; }
+        .pres-item { background: #fff; border: 1px solid #e8e4dd; border-left: 3px solid #c4a44e; border-radius: 4px; padding: 0.9rem 1rem; transition: box-shadow 0.2s ease; }
+        .pres-item:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+        .pres-meta { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.35rem 0.75rem; margin-bottom: 0.4rem; }
+        .pres-time { font-weight: bold; color: #9a7c3f; min-width: 110px; font-variant-numeric: tabular-nums; }
+        .pres-no { font-size: 0.8rem; font-weight: bold; color: #1a2744; background: #f5eed9; border-radius: 4px; padding: 1px 8px; }
+        .pres-award { font-size: 0.75rem; font-weight: bold; color: #9b2020; border: 1px solid #e3b8b8; border-radius: 4px; padding: 1px 6px; }
+        .pres-title { color: #2d3f6b; font-size: 1.05rem; font-weight: 500; line-height: 1.65; margin-bottom: 0.4rem; }
+        .pres-authors { font-size: 0.9rem; color: #555; line-height: 1.7; }
         .schedule-day { border: 1px solid #ddd; border-top: 4px solid #1a2744; border-radius: 4px; overflow: hidden; margin-bottom: 1.5rem; transition: transform 0.3s ease, box-shadow 0.3s ease; }
         .schedule-day:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(0,0,0,0.12); }
         .schedule-day-header { background: #1a2744; color: white; padding: 12px 20px; font-weight: bold; }
         .schedule-row { display: flex; padding: 12px 20px; border-bottom: 1px solid #eee; align-items: baseline; gap: 1.5rem; }
         .schedule-row:last-child { border-bottom: none; }
         .schedule-time { font-size: 0.9rem; color: #999; min-width: 100px; }
+        .schedule-detail { display: block; font-size: 0.85rem; color: #6b7a9a; margin-top: 0.15rem; }
         .bank-box { background: #f3f5f9; border-left: 4px solid #1a2744; padding: 1.5rem; border-radius: 4px; margin-top: 1.5rem; transition: transform 0.3s ease, box-shadow 0.3s ease; }
         .bank-box:hover { transform: translateX(4px); box-shadow: 0 4px 12px rgba(26,39,68,0.15); }
         .bank-label { font-size: 0.8rem; font-weight: bold; color: #9a7c3f; margin-bottom: 0.5rem; letter-spacing: 0.1em; }
@@ -200,31 +215,33 @@
         
         <!-- Schedule -->
         <section id="schedule" class="section-padding">
-            <h2 class="section-heading">日程（予定案）</h2>
+            <h2 class="section-heading">日程</h2>
             <div style="display: flex; flex-direction: column; gap: 1.5rem;">
                 <div class="schedule-day" style="border-top-color: #6b7a9a;">
                     <div class="schedule-day-header">11月13日（金）</div>
-                    <div style="background: #f3f5f9; padding: 12px 20px; font-size: 0.85rem; color: #9a7c3f;">会場：関西学院大学梅田キャンパスおよびオンライン併用</div>
+                    <div style="background: #f3f5f9; padding: 12px 20px; font-size: 0.85rem; color: #9a7c3f;">会場：関西学院大学 梅田キャンパス／対面・オンライン併用</div>
                     <div class="schedule-row">
                         <span class="schedule-time">17:00 – 18:30</span>
-                        <span>理事会・評議員会合同開催</span>
+                        <span>理事会・評議員会</span>
                     </div>
                 </div>
                 <div class="schedule-day">
                     <div class="schedule-day-header">11月14日（土）</div>
                     <div style="background: #f3f5f9; padding: 12px 20px; font-size: 0.85rem; color: #9a7c3f;">会場：関西学院大学 西宮上ケ原キャンパス</div>
-                    <div class="schedule-row"><span class="schedule-time">08:30 –</span><span>受付開始</span></div>
-                    <div class="schedule-row"><span class="schedule-time">09:30 – 12:00</span><span>口頭発表（賞対象者）</span></div>
-                    <div class="schedule-row" style="background: #f5eed9;"><span class="schedule-time">10:00 – 16:00</span><span>ポスター発表（コアタイム 12:15 – 13:15）</span></div>
-                    <div class="schedule-row"><span class="schedule-time">13:30 – 16:00</span><span>市民公開シンポジウム（オンライン併用）</span></div>
-                    <div class="schedule-row"><span class="schedule-time">16:10 – 17:00</span><span>活動報告会</span></div>
-                    <div class="schedule-row"><span class="schedule-time">17:00 – 18:00</span><span>学会賞・奨励賞講演（予定）</span></div>
-                    <div class="schedule-row" style="background: #f5eed9;"><span class="schedule-time">18:30 – 20:00</span><span>懇親会（関西学院会館 ポプラ）</span></div>
+                    <div class="schedule-row"><span class="schedule-time">09:00 –</span><span>受付<span class="schedule-detail">F号館 1階</span></span></div>
+                    <div class="schedule-row"><span class="schedule-time">10:00 – 11:15</span><span>一般講演（口頭発表）<span class="schedule-detail">A会場 F-203教室／B会場 F-204教室</span></span></div>
+                    <div class="schedule-row" style="background: #f5eed9;"><span class="schedule-time">10:00 – 16:00</span><span>ポスター発表（コアタイム 11:30 – 12:45）<span class="schedule-detail">F-104教室</span></span></div>
+                    <div class="schedule-row"><span class="schedule-time">13:30 – 16:00</span><span>市民公開シンポジウム<span class="schedule-detail">S会場（F-203教室）／対面・オンライン（Zoom・事前申込制）</span></span></div>
+                    <div class="schedule-row" style="background: #fdf4f4;"><span class="schedule-time" style="color: #9b2020;">14:00</span><span style="color: #9b2020; font-weight: bold;">優秀発表賞（優秀講演発表賞）投票締切</span></div>
+                    <div class="schedule-row"><span class="schedule-time">16:20 – 17:10</span><span>活動報告会<span class="schedule-detail">S会場（F-203教室）</span></span></div>
+                    <div class="schedule-row"><span class="schedule-time">17:20 – 17:30</span><span>最優秀発表賞表彰<span class="schedule-detail">S会場（F-203教室）</span></span></div>
+                    <div class="schedule-row"><span class="schedule-time">17:35 – 18:00</span><span>学会賞・受賞講演<span class="schedule-detail">S会場（F-203教室）／「チョウ類の群集生態と多様性保全に関する研究」北原正彦（元 山梨県富士山科学研究所）</span></span></div>
+                    <div class="schedule-row" style="background: #f5eed9;"><span class="schedule-time">18:30 – 20:00</span><span>懇親会<span class="schedule-detail">関西学院会館 ポプラ</span></span></div>
                 </div>
                 <div class="schedule-day">
                     <div class="schedule-day-header">11月15日（日）</div>
                     <div style="background: #f3f5f9; padding: 12px 20px; font-size: 0.85rem; color: #9a7c3f;">会場：関西学院大学 西宮上ケ原キャンパス</div>
-                    <div class="schedule-row"><span class="schedule-time">09:30 – 12:00</span><span>口頭発表（賞対象者以外）</span></div>
+                    <div class="schedule-row"><span class="schedule-time">10:00 – 11:15</span><span>一般講演（口頭発表）<span class="schedule-detail">A会場 F-102教室／B会場 F-104教室</span></span></div>
                 </div>
             </div>
         </section>
@@ -236,10 +253,99 @@
                 <div>
                     <h3 style="font-size: 1.5rem; color: #1a2744; margin-bottom: 1.5rem; border-bottom: 2px solid #9a7c3f; padding-bottom: 0.5rem;">市民公開シンポジウム</h3>
                     <div class="card">
-                        <div style="text-align: center; padding: 4rem 2rem;">
-                            <p style="color: #666; margin-bottom: 1rem;">近い将来にプログラムを掲載します。</p>
-                            <div style="display: inline-flex; align-items: center; padding: 12px 20px; background: #f5f5f5; border-radius: 6px; color: #666;">
-                                ⏳ 工事中
+                        <div style="margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid #e8e4dd;">
+                            <div style="display: flex; flex-wrap: wrap; gap: 0.75rem 2rem; margin-bottom: 1rem; font-size: 0.95rem;">
+                                <div><strong style="color: #9a7c3f;">会期：</strong>2026年11月14日（土）13:30～16:00（オンライン併用）</div>
+                                <div><strong style="color: #9a7c3f;">会場：</strong>関西学院大学 F号館</div>
+                            </div>
+                            <div style="background: #f5eed9; padding: 1rem 1.25rem; border-radius: 6px; border-left: 4px solid #9a7c3f;">
+                                <div style="font-size: 0.85rem; color: #9a7c3f; font-weight: bold; margin-bottom: 0.25rem;">テーマ</div>
+                                <div style="font-size: 1.1rem; font-weight: bold; color: #1a2744; line-height: 1.5;">人と生きものをつなぐ環境動物昆虫学―研究成果を社会へ届ける―</div>
+                            </div>
+                            <details class="notice-box" style="margin-top: 1rem;">
+                                <summary>
+                                    <div class="accordion-title">開催趣旨</div>
+                                    <div class="accordion-hint-notice">クリックして本文を表示</div>
+                                </summary>
+                                <div class="accordion-body" style="font-size: 0.95rem; line-height: 1.85; color: #2c2820;">
+                                    <p style="margin-top: 0; margin-bottom: 1rem; text-indent: 1em;">環境動物昆虫学は、人間生活と深く関わる昆虫や動物を対象に、生態、保全、防除、共生など多様な視点から研究が進められてきた。一方で、その研究成果や生きものの魅力を社会へどのように伝え、人と自然とのより良い関係を築いていくのかという視点は、これからの環境動物昆虫学においてますます重要な課題となっている。</p>
+                                    <p style="margin-bottom: 1rem; text-indent: 1em;">近年、都市化や生活様式の変化に伴い、子どもたちが自然や生きものと直接触れ合う機会は減少している。また、生物多様性の損失や外来種問題、気候変動など、自然環境を取り巻く課題は複雑化し、生きものに関する正しい知識や理解を社会全体で共有することの重要性は一層高まっている。研究成果を社会へ還元し、自然との関わりを未来へつないでいくことは、研究者に求められる重要な使命の一つである。</p>
+                                    <p style="margin-bottom: 1rem; text-indent: 1em;">本シンポジウムでは、人と生きものをつなぐことをテーマに、昆虫や動物の魅力や価値をどのように伝え、人と生きものとの関係を豊かに育んでいくのかについて、多様な立場で研究・実践を行う講演者に話題提供をしていただく。外来種・在来種の保全、生きものを活用した環境教育、幼児期における自然体験など、多彩な実践を通して、環境動物昆虫学が社会に果たす役割と今後の可能性を多角的に考える機会としたい。</p>
+                                    <p style="margin-bottom: 0; text-indent: 1em;">本シンポジウムが、環境動物昆虫学の研究成果を社会へ発信し、その価値や可能性を多様な立場の参加者と共有する契機となることを期待する。</p>
+                                </div>
+                            </details>
+                        </div>
+
+                        <div style="display: flex; flex-direction: column; gap: 1rem;">
+                            <!-- 13:30～13:40 開会挨拶・趣旨説明 -->
+                            <div style="padding: 1rem; background: #fff; border: 1px solid #e8e4dd; border-radius: 6px;">
+                                <div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.5rem 1rem; margin-bottom: 0.25rem;">
+                                    <span style="font-weight: bold; color: #9a7c3f; min-width: 110px;">13:30～13:40</span>
+                                    <span style="font-weight: bold; color: #1a2744; font-size: 1.05rem;">開会挨拶・趣旨説明</span>
+                                </div>
+                                <div style="color: #555; font-size: 0.9rem; margin-top: 0.25rem;">
+                                    江田慧子（関西学院大学 教育学部）
+                                </div>
+                            </div>
+
+                            <!-- 13:40～15:40 話題提供 -->
+                            <div style="border: 1px solid #e8e4dd; border-radius: 6px; overflow: hidden; background: #fff;">
+                                <div style="background: #f3f5f9; padding: 0.75rem 1rem; border-bottom: 1px solid #e8e4dd; color: #1a2744; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0.5rem;">
+                                    <div>
+                                        <span style="font-weight: bold; color: #9a7c3f; margin-right: 0.75rem;">13:40～15:40</span>
+                                        <span style="font-weight: bold; font-size: 1.05rem;">話題提供</span>
+                                    </div>
+                                    <span style="font-size: 0.85rem; color: #555; background: #e8e4dd; padding: 2px 10px; border-radius: 4px;">1人講演時間25分 + 質疑応答5分</span>
+                                </div>
+                                <div style="padding: 1rem 1.25rem; display: flex; flex-direction: column; gap: 1.25rem;">
+                                    <!-- 演者 1 -->
+                                    <div style="padding-bottom: 1rem; border-bottom: 1px dashed #e8e4dd;">
+                                        <div style="font-weight: bold; color: #1a2744; margin-bottom: 0.35rem;">
+                                            佐賀達矢 氏（神戸大学大学院人間発達環境学研究科 助教）
+                                        </div>
+                                        <div style="color: #2d3f6b; font-size: 1.05rem; font-weight: 500; padding: 0.4rem 0.75rem; background: #fdfcf9; border-left: 3px solid #c4a44e;">
+                                            「人と虫の関係を認識・食・文化から考える」
+                                        </div>
+                                    </div>
+
+                                    <!-- 演者 2 -->
+                                    <div style="padding-bottom: 1rem; border-bottom: 1px dashed #e8e4dd;">
+                                        <div style="font-weight: bold; color: #1a2744; margin-bottom: 0.35rem;">
+                                            矢崎英盛 氏（東京都立大学 理学部 生命科学科 准教授）
+                                        </div>
+                                        <div style="color: #2d3f6b; font-size: 1.05rem; font-weight: 500; padding: 0.4rem 0.75rem; background: #fdfcf9; border-left: 3px solid #c4a44e;">
+                                            「科学コミュニケーションとしての昆虫観察：観察から問い、そして基礎科学へ」
+                                        </div>
+                                    </div>
+
+                                    <!-- 演者 3 -->
+                                    <div style="padding-bottom: 1rem; border-bottom: 1px dashed #e8e4dd;">
+                                        <div style="font-weight: bold; color: #1a2744; margin-bottom: 0.35rem;">
+                                            藤崎亜由子 氏（奈良教育大学 学校教育講座 教授）
+                                        </div>
+                                        <div style="color: #2d3f6b; font-size: 1.05rem; font-weight: 500; padding: 0.4rem 0.75rem; background: #fdfcf9; border-left: 3px solid #c4a44e;">
+                                            「幼児期の虫との出会いと自然との関わり」
+                                        </div>
+                                    </div>
+
+                                    <!-- 演者 4 -->
+                                    <div>
+                                        <div style="font-weight: bold; color: #1a2744; margin-bottom: 0.35rem;">
+                                            湊 秋作 氏（（一社）ヤマネ・いきもの研究所 代表理事）
+                                        </div>
+                                        <div style="color: #2d3f6b; font-size: 1.05rem; font-weight: 500; padding: 0.4rem 0.75rem; background: #fdfcf9; border-left: 3px solid #c4a44e;">
+                                            「研究者は自然の「翻訳者」―科学を言葉に、生きものの魅力を人々へ―」
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 15:50～16:00 閉会挨拶 -->
+                            <div style="padding: 1rem; background: #fff; border: 1px solid #e8e4dd; border-radius: 6px;">
+                                <div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.5rem 1rem;">
+                                    <span style="font-weight: bold; color: #9a7c3f; min-width: 110px;">15:50～16:00</span>
+                                    <span style="font-weight: bold; color: #1a2744; font-size: 1.05rem;">閉会挨拶</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -247,36 +353,432 @@
                 <div>
                     <h3 style="font-size: 1.5rem; color: #1a2744; margin-bottom: 1.5rem; border-bottom: 2px solid #9a7c3f; padding-bottom: 0.5rem;">一般講演</h3>
                     <div class="tab-list" role="tablist">
-                        <button class="tab-button active" data-tab="oral1" role="tab">口頭発表 1日目</button>
-                        <button class="tab-button" data-tab="oral2" role="tab">口頭発表 2日目</button>
-                        <button class="tab-button" data-tab="poster" role="tab">ポスター発表</button>
+                        <button id="btn-oral1" class="tab-button active" data-tab="oral1" role="tab" aria-selected="true" aria-controls="tab-oral1">口頭発表 1日目</button>
+                        <button id="btn-oral2" class="tab-button" data-tab="oral2" role="tab" aria-selected="false" aria-controls="tab-oral2">口頭発表 2日目</button>
+                        <button id="btn-poster" class="tab-button" data-tab="poster" role="tab" aria-selected="false" aria-controls="tab-poster">ポスター発表</button>
                     </div>
-                    <div id="tab-oral1" class="tab-content active" role="tabpanel">
+                    <div id="tab-oral1" class="tab-content active" role="tabpanel" aria-labelledby="btn-oral1">
                         <div class="card">
-                            <div style="text-align: center; padding: 4rem 2rem;">
-                                <p style="color: #666; margin-bottom: 1rem;">11月14日（土）の口頭発表プログラム</p>
-                                <div style="display: inline-flex; align-items: center; padding: 12px 20px; background: #f5f5f5; border-radius: 6px; color: #666;">
-                                    ⏳ 工事中
+                            <div class="pres-summary">
+                                <div><strong style="color: #9a7c3f;">日時：</strong>11月14日（土）10:00～11:15</div>
+                                <div><strong style="color: #9a7c3f;">会場：</strong>A会場 F-203教室／B会場 F-204教室</div>
+                                <div><strong style="color: #9a7c3f;">形式：</strong>対面のみ</div>
+                            </div>
+                            <p class="pres-legend">○：発表者、※：最優秀発表賞対象者／発表者は次演題の進行を担当<br>最初の演題の座長は実行委員が担当します。</p>
+                            <div style="display: flex; flex-direction: column; gap: 1rem;">
+                                <div class="pres-venue">
+                                    <div class="pres-venue-header">
+                                        <span>A会場（F-203教室）</span>
+                                    </div>
+                                    <div class="pres-venue-body">
+                                        <div class="pres-item">
+                                            <div class="pres-meta">
+                                                <span class="pres-time">10:00</span>
+                                                <span class="pres-no">A-1</span>
+                                                <span class="pres-award">※ 最優秀発表賞対象</span>
+                                            </div>
+                                            <div class="pres-title">千葉県南部の耕作放棄地を活用した湿地保全と水生生物相の記録 &lt;希少水生生物の生息地としての価値&gt;</div>
+                                            <div class="pres-authors">佐久間祐希（(株) シー・アイ・シー住環）</div>
+                                        </div>
+                                        <div class="pres-item">
+                                            <div class="pres-meta">
+                                                <span class="pres-time">10:15</span>
+                                                <span class="pres-no">A-2</span>
+                                                <span class="pres-award">※ 最優秀発表賞対象</span>
+                                            </div>
+                                            <div class="pres-title">センチコガネ科における外生菌根菌の胞子運搬者としての潜在能力解明</div>
+                                            <div class="pres-authors">○西田拓翔（近畿大院・農学研究科）・石若直人（近畿大・農）・平岩将良（近畿大学・農）・澤畠拓夫（近畿大学・農）・早坂大亮（近畿大学・農）</div>
+                                        </div>
+                                        <div class="pres-item">
+                                            <div class="pres-meta">
+                                                <span class="pres-time">10:30</span>
+                                                <span class="pres-no">A-3</span>
+                                                <span class="pres-award">※ 最優秀発表賞対象</span>
+                                            </div>
+                                            <div class="pres-title">上流域のダムやため池の有無とゲンジボタル成虫の個体数との関係</div>
+                                            <div class="pres-authors">○上田祐太・上田昇平・中濱直之・平井規央（大阪公立大学院・農）</div>
+                                        </div>
+                                        <div class="pres-item">
+                                            <div class="pres-meta">
+                                                <span class="pres-time">10:45</span>
+                                                <span class="pres-no">A-4</span>
+                                                <span class="pres-award">※ 最優秀発表賞対象</span>
+                                            </div>
+                                            <div class="pres-title">水稲栽培で行われる中干しに対する生物多様性保全効果の高い「江」の探索</div>
+                                            <div class="pres-authors">○三木哉芽（近畿大・院・農）・石若直人（近畿大・農）・平岩将良（近畿大・農）・早坂大亮（近畿大・農）</div>
+                                        </div>
+                                        <div class="pres-item">
+                                            <div class="pres-meta">
+                                                <span class="pres-time">11:00</span>
+                                                <span class="pres-no">A-5</span>
+                                                <span class="pres-award">※ 最優秀発表賞対象</span>
+                                            </div>
+                                            <div class="pres-title">アライグマにおける季節に応じた湿地利用の変化とオタマジャクシ捕食の有無</div>
+                                            <div class="pres-authors">○谷口琴音（近大院・農）・早坂大亮（近大・農）・澤畠拓夫（近大・農）</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pres-venue">
+                                    <div class="pres-venue-header">
+                                        <span>B会場（F-204教室）</span>
+                                    </div>
+                                    <div class="pres-venue-body">
+                                        <div class="pres-item">
+                                            <div class="pres-meta">
+                                                <span class="pres-time">10:00</span>
+                                                <span class="pres-no">B-1</span>
+                                                <span class="pres-award">※ 最優秀発表賞対象</span>
+                                            </div>
+                                            <div class="pres-title">RNA干渉を用いたイエシロアリ Coptotermes formosanus の幼形生殖虫分化誘導</div>
+                                            <div class="pres-authors">長谷帆真・梅澤究・板倉修司（近畿大院・農）</div>
+                                        </div>
+                                        <div class="pres-item">
+                                            <div class="pres-meta">
+                                                <span class="pres-time">10:15</span>
+                                                <span class="pres-no">B-2</span>
+                                                <span class="pres-award">※ 最優秀発表賞対象</span>
+                                            </div>
+                                            <div class="pres-title">生立木および枯死木のシロアリ加害モニタリングに向けたガス指標の探索</div>
+                                            <div class="pres-authors">○佐々木真歩（京大院・農）・伊藤雅之（京大・生存研）・高橋けんし（京大・生存研）・竹松葉子（山口大院・創成科学）・大村和香子（京大・生存研）</div>
+                                        </div>
+                                        <div class="pres-item">
+                                            <div class="pres-meta">
+                                                <span class="pres-time">10:30</span>
+                                                <span class="pres-no">B-3</span>
+                                                <span class="pres-award">※ 最優秀発表賞対象</span>
+                                            </div>
+                                            <div class="pres-title">ワラジムシ防御物質のアリに対する忌避活性及び麻痺毒性の評価</div>
+                                            <div class="pres-authors">○村木拓斗・永井禎己・清水伸泰（京都先端大バイオ環境）</div>
+                                        </div>
+                                        <div class="pres-item">
+                                            <div class="pres-meta">
+                                                <span class="pres-time">10:45</span>
+                                                <span class="pres-no">B-4</span>
+                                                <span class="pres-award">※ 最優秀発表賞対象</span>
+                                            </div>
+                                            <div class="pres-title">匂いと粘液から見たナメクジ2種における捕食回避行動の差異</div>
+                                            <div class="pres-authors">○林 大智・高倉耕一（滋賀県大・環境）</div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div id="tab-oral2" class="tab-content" role="tabpanel">
+                    <div id="tab-oral2" class="tab-content" role="tabpanel" aria-labelledby="btn-oral2">
                         <div class="card">
-                            <div style="text-align: center; padding: 4rem 2rem;">
-                                <p style="color: #666; margin-bottom: 1rem;">11月15日（日）の口頭発表プログラム</p>
-                                <div style="display: inline-flex; align-items: center; padding: 12px 20px; background: #f5f5f5; border-radius: 6px; color: #666;">
-                                    ⏳ 工事中
+                            <div class="pres-summary">
+                                <div><strong style="color: #9a7c3f;">日時：</strong>11月15日（日）10:00～11:15</div>
+                                <div><strong style="color: #9a7c3f;">会場：</strong>A会場 F-102教室／B会場 F-104教室</div>
+                                <div><strong style="color: #9a7c3f;">形式：</strong>対面のみ</div>
+                            </div>
+                            <p class="pres-legend">○：発表者／発表者は次演題の進行を担当<br>最初の演題の座長は実行委員が担当します。</p>
+                            <div style="display: flex; flex-direction: column; gap: 1rem;">
+                                <div class="pres-venue">
+                                    <div class="pres-venue-header">
+                                        <span>A会場（F-102教室）</span>
+                                    </div>
+                                    <div class="pres-venue-body">
+                                        <div class="pres-item">
+                                            <div class="pres-meta">
+                                                <span class="pres-time">10:00</span>
+                                                <span class="pres-no">A-6</span>
+                                            </div>
+                                            <div class="pres-title">日本産 Morophaga 属（チョウ目、ヒロズコガ科）の識別法と系統関係</div>
+                                            <div class="pres-authors">○長田庸平（大阪市立自然史博物館）・朴鎮享（九州大学）・外村俊輔（徳島県立博物館）</div>
+                                        </div>
+                                        <div class="pres-item">
+                                            <div class="pres-meta">
+                                                <span class="pres-time">10:15</span>
+                                                <span class="pres-no">A-7</span>
+                                            </div>
+                                            <div class="pres-title">田植え時期の違いは水田のトンボ群集にどのような影響をおよぼすのか？</div>
+                                            <div class="pres-authors">○中西康介（国立環境研究所）</div>
+                                        </div>
+                                        <div class="pres-item">
+                                            <div class="pres-meta">
+                                                <span class="pres-time">10:30</span>
+                                                <span class="pres-no">A-8</span>
+                                            </div>
+                                            <div class="pres-title">ヒメシジミ幼虫は2齢幼虫に比べ4齢幼虫では行動が大胆になる</div>
+                                            <div class="pres-authors">○石谷正宇（島根大学非常勤講師・大阪公立大学客員研究員）・平井規央（大阪公立大学）</div>
+                                        </div>
+                                        <div class="pres-item">
+                                            <div class="pres-meta">
+                                                <span class="pres-time">10:45</span>
+                                                <span class="pres-no">A-9</span>
+                                            </div>
+                                            <div class="pres-title">カワニナの捕食回避反応を誘起する化学シグナルの探索</div>
+                                            <div class="pres-authors">高倉耕一・馬場結梨・苗村孟（滋賀県大・環境）</div>
+                                        </div>
+                                        <div class="pres-item">
+                                            <div class="pres-meta">
+                                                <span class="pres-time">11:00</span>
+                                                <span class="pres-no">A-10</span>
+                                            </div>
+                                            <div class="pres-title">大阪府内の都市部と山間部の緑地におけるチョウ類群集とその変化</div>
+                                            <div class="pres-authors">笹倉武流（大阪府立大・生命）・上田昇平・加我宏之・松尾薫・○平井規央（大阪公立大・農）</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pres-venue">
+                                    <div class="pres-venue-header">
+                                        <span>B会場（F-104教室）</span>
+                                    </div>
+                                    <div class="pres-venue-body">
+                                        <div class="pres-item">
+                                            <div class="pres-meta">
+                                                <span class="pres-time">10:00</span>
+                                                <span class="pres-no">B-6</span>
+                                            </div>
+                                            <div class="pres-title">ホソケブトヒラタキクムシ Minthea reticulatus Lesne 1931 (Coleoptera, Bostrichidae) の発生事例と形態的特徴</div>
+                                            <div class="pres-authors">○大村和香子（京大生存研）・神崎菜摘（森林総研）・槇原寛（元・森林総研）</div>
+                                        </div>
+                                        <div class="pres-item">
+                                            <div class="pres-meta">
+                                                <span class="pres-time">10:15</span>
+                                                <span class="pres-no">B-7</span>
+                                            </div>
+                                            <div class="pres-title">ヒノキ材輸出に伴うイエシロアリ及びアメリカカンザイシロアリの移動リスク緩和策の検討</div>
+                                            <div class="pres-authors">○神原広平（森林総研）・佐々木真歩・大村和香子（京大生存研）</div>
+                                        </div>
+                                        <div class="pres-item">
+                                            <div class="pres-meta">
+                                                <span class="pres-time">10:30</span>
+                                                <span class="pres-no">B-8</span>
+                                            </div>
+                                            <div class="pres-title">静止状態および動いている状態のトンボ模型に対するハエ目昆虫の回避効果</div>
+                                            <div class="pres-authors">上田一徳（近大農）・澤畠拓夫（近大農）・早坂大亮（近大農）・新井大（(株)Eikyu）</div>
+                                        </div>
+                                        <div class="pres-item">
+                                            <div class="pres-meta">
+                                                <span class="pres-time">10:45</span>
+                                                <span class="pres-no">B-9</span>
+                                            </div>
+                                            <div class="pres-title">大型ファン式害虫駆除器の開発</div>
+                                            <div class="pres-authors">○栁澤太洋・吉岡滉司・菊田幸雄・浮田涼子・引土知幸・川尻由美・中山幸治（大日本除虫菊(株)中央研究所）</div>
+                                        </div>
+                                        <div class="pres-item">
+                                            <div class="pres-meta">
+                                                <span class="pres-time">11:00</span>
+                                                <span class="pres-no">B-10</span>
+                                            </div>
+                                            <div class="pres-title">速効性を付与したカメムシ用乳剤の開発</div>
+                                            <div class="pres-authors">○岡桃子・三好一史・三田孝弘・菊田幸雄・下方宏文・引土知幸・川尻由美・中山幸治（大日本除虫菊(株)中央研究所）</div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div id="tab-poster" class="tab-content" role="tabpanel">
+                    <div id="tab-poster" class="tab-content" role="tabpanel" aria-labelledby="btn-poster">
                         <div class="card">
-                            <div style="text-align: center; padding: 4rem 2rem;">
-                                <p style="color: #666; margin-bottom: 1rem;">ポスター発表プログラム（11月14日）</p>
-                                <div style="display: inline-flex; align-items: center; padding: 12px 20px; background: #f5f5f5; border-radius: 6px; color: #666;">
-                                    ⏳ 工事中
+                            <div class="pres-summary">
+                                <div><strong style="color: #9a7c3f;">日時：</strong>11月14日（土）10:00～16:00（コアタイム 11:30～12:45）</div>
+                                <div><strong style="color: #9a7c3f;">会場：</strong>F-104教室</div>
+                                <div><strong style="color: #9a7c3f;">形式：</strong>対面のみ</div>
+                            </div>
+                            <p class="pres-legend">○：発表者、※：最優秀発表賞対象者</p>
+                            <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                                <div class="pres-item">
+                                    <div class="pres-meta">
+                                        <span class="pres-no">P-1</span>
+                                        <span class="pres-award">※ 最優秀発表賞対象</span>
+                                    </div>
+                                    <div class="pres-title">止水性ミズスマシ類の季節消長および生物多様性指標としての有用性評価</div>
+                                    <div class="pres-authors">○米田壮太・丹野晴瑛・磯野亮・渡辺黎也（倉敷芸術科学大学）</div>
+                                </div>
+                                <div class="pres-item">
+                                    <div class="pres-meta">
+                                        <span class="pres-no">P-2</span>
+                                        <span class="pres-award">※ 最優秀発表賞対象</span>
+                                    </div>
+                                    <div class="pres-title">河川のたまりが水生昆虫類の生息地として果たす機能の評価</div>
+                                    <div class="pres-authors">○垣田拓海・渡辺黎也（倉敷芸術科学大学）</div>
+                                </div>
+                                <div class="pres-item">
+                                    <div class="pres-meta">
+                                        <span class="pres-no">P-3</span>
+                                        <span class="pres-award">※ 最優秀発表賞対象</span>
+                                    </div>
+                                    <div class="pres-title">水田の中干しが水生動物群集に与える影響とマルチトープの退避場所としての機能</div>
+                                    <div class="pres-authors">○金正泰志・平野佑真（倉敷芸術科学大学）・太刀川晴之（(株) エーゼログループ）・佐川志郎（兵庫県立大学大学院）・渡辺黎也（倉敷芸術科学大学・兵庫県立大学大学院）</div>
+                                </div>
+                                <div class="pres-item">
+                                    <div class="pres-meta">
+                                        <span class="pres-no">P-4</span>
+                                        <span class="pres-award">※ 最優秀発表賞対象</span>
+                                    </div>
+                                    <div class="pres-title">鳥類の糞を利用する節足動物群集と利用様式の解明</div>
+                                    <div class="pres-authors">○門脇健太（近畿大・農）・坂元利駆（近畿大・院・農）・澤畠拓夫（近畿大・農）</div>
+                                </div>
+                                <div class="pres-item">
+                                    <div class="pres-meta">
+                                        <span class="pres-no">P-5</span>
+                                        <span class="pres-award">※ 最優秀発表賞対象</span>
+                                    </div>
+                                    <div class="pres-title">ネオニコチノイドが乱すミナミメダカの捕食回避行動：ジノテフラン曝露下での化学的シグナル応答</div>
+                                    <div class="pres-authors">○門下航之・高倉耕一（滋賀県大院・環境）</div>
+                                </div>
+                                <div class="pres-item">
+                                    <div class="pres-meta">
+                                        <span class="pres-no">P-6</span>
+                                        <span class="pres-award">※ 最優秀発表賞対象</span>
+                                    </div>
+                                    <div class="pres-title">種子食と種子散布のはざま：種子食性アリに対するユキヤナギの戦略</div>
+                                    <div class="pres-authors">○和田彩楠（近畿大・院・農）・平岩将良（近畿大・農）・葛西弘（福井県大）・石若直人（近畿大・農）・澤畠拓夫（近畿大・農）・米谷衣代（近畿大・農）・早坂大亮（近畿大・農）</div>
+                                </div>
+                                <div class="pres-item">
+                                    <div class="pres-meta">
+                                        <span class="pres-no">P-7</span>
+                                        <span class="pres-award">※ 最優秀発表賞対象</span>
+                                    </div>
+                                    <div class="pres-title">駆動系の異なる自動車騒音が鳥類による猛禽類の羽音に対する検知感度に及ぼす影響</div>
+                                    <div class="pres-authors">○坂元利駆（近畿大院・農）・石若直人（近畿大・農）・早坂大亮（近畿大・農）</div>
+                                </div>
+                                <div class="pres-item">
+                                    <div class="pres-meta">
+                                        <span class="pres-no">P-8</span>
+                                        <span class="pres-award">※ 最優秀発表賞対象</span>
+                                    </div>
+                                    <div class="pres-title">メスが好むオスは地域で変わるのか？：コオイムシにおける配偶者選択のクライン</div>
+                                    <div class="pres-authors">○大浦ひなた（長崎大院・総合生産科学）・小嶺星心（長崎大・教）・田中慶治（長崎大・教）・松田彩葉（長崎大・教）・渡辺黎也（倉敷芸科大・生命）・大庭伸也（長崎大院・総合生産科学／長崎大・教）</div>
+                                </div>
+                                <div class="pres-item">
+                                    <div class="pres-meta">
+                                        <span class="pres-no">P-9</span>
+                                        <span class="pres-award">※ 最優秀発表賞対象</span>
+                                    </div>
+                                    <div class="pres-title">人工光下に長時間滞在した昆虫が早朝に被る、鳥類による捕食</div>
+                                    <div class="pres-authors">○市野凌也・弘中満太郎（石川県立大・応用昆虫）</div>
+                                </div>
+                                <div class="pres-item">
+                                    <div class="pres-meta">
+                                        <span class="pres-no">P-10</span>
+                                        <span class="pres-award">※ 最優秀発表賞対象</span>
+                                    </div>
+                                    <div class="pres-title">長野県上伊那地域のアリ類群集と植生環境との関係</div>
+                                    <div class="pres-authors">○西津章紀（信州大院・農）・大窪久美子（信大・農）</div>
+                                </div>
+                                <div class="pres-item">
+                                    <div class="pres-meta">
+                                        <span class="pres-no">P-11</span>
+                                        <span class="pres-award">※ 最優秀発表賞対象</span>
+                                    </div>
+                                    <div class="pres-title">ニホンミツバチ Nasanov 腺および Koshewnikow 腺揮発性分泌物質：セイヨウミツバチとの比較</div>
+                                    <div class="pres-authors">深見治一（(株)京都ニホンミツバチ研究所）・○梶原優壱（京都先端科学大・バイオ環境）・坂本文夫（(株)京都ニホンミツバチ研究所）</div>
+                                </div>
+                                <div class="pres-item">
+                                    <div class="pres-meta">
+                                        <span class="pres-no">P-12</span>
+                                        <span class="pres-award">※ 最優秀発表賞対象</span>
+                                    </div>
+                                    <div class="pres-title">大阪府の山間部におけるビオトープの水生動物の群集構造と代替生息地としての評価</div>
+                                    <div class="pres-authors">○内田明日香・上田昇平・中濱直之・平井規央（大阪公立大院・農）</div>
+                                </div>
+                                <div class="pres-item">
+                                    <div class="pres-meta">
+                                        <span class="pres-no">P-13</span>
+                                        <span class="pres-award">※ 最優秀発表賞対象</span>
+                                    </div>
+                                    <div class="pres-title">地黄湿地に導入されたメダカの駆除と水生動物群集への影響</div>
+                                    <div class="pres-authors">○西澤 築・中濱直之・上田昇平・平井規央（大阪公立大学院・農）</div>
+                                </div>
+                                <div class="pres-item">
+                                    <div class="pres-meta">
+                                        <span class="pres-no">P-14</span>
+                                        <span class="pres-award">※ 最優秀発表賞対象</span>
+                                    </div>
+                                    <div class="pres-title">複数個体群のゴマシジミ幼虫に対するアリ類の行動の比較</div>
+                                    <div class="pres-authors">○勝見太一（大阪公大院・農）・矢後勝也（東大・総研博）・蓑原茂（東大・総研博）・中濱直之・平井規央・上田昇平（大阪公大院・農）</div>
+                                </div>
+                                <div class="pres-item">
+                                    <div class="pres-meta">
+                                        <span class="pres-no">P-15</span>
+                                        <span class="pres-award">※ 最優秀発表賞対象</span>
+                                    </div>
+                                    <div class="pres-title">大阪府内におけるナゴヤダルマガエルの分布状況</div>
+                                    <div class="pres-authors">○西澤克弥（大阪公大院・農）・秋田耕佑（大阪市立環境科学センター）・湯浅淳子（大阪自然環境保全協会）・中濱直之・平井規央・上田昇平（大阪公大院・農）</div>
+                                </div>
+                                <div class="pres-item">
+                                    <div class="pres-meta">
+                                        <span class="pres-no">P-16</span>
+                                        <span class="pres-award">※ 最優秀発表賞対象</span>
+                                    </div>
+                                    <div class="pres-title">ニッチを共有する外来種の侵入が在来種に及ぼす影響：シジミチョウ2種間の種間競争の実態</div>
+                                    <div class="pres-authors">○谷澤拓真（近大院・農）・早坂大亮（近大・農）</div>
+                                </div>
+                                <div class="pres-item">
+                                    <div class="pres-meta">
+                                        <span class="pres-no">P-17</span>
+                                        <span class="pres-award">※ 最優秀発表賞対象</span>
+                                    </div>
+                                    <div class="pres-title">異なるアルゼンチンアリ集団間の局所的空間内での敵対性：特に分布境界個体群内の関係性に着目した評価</div>
+                                    <div class="pres-authors">○松本光太（近畿大院・農）・澤畠拓夫・早坂大亮（近畿大・農）</div>
+                                </div>
+                                <div class="pres-item">
+                                    <div class="pres-meta">
+                                        <span class="pres-no">P-18</span>
+                                        <span class="pres-award">※ 最優秀発表賞対象</span>
+                                    </div>
+                                    <div class="pres-title">植物工場におけるCu-TOP®不織布を用いたコバエ類の抑制効果</div>
+                                    <div class="pres-authors">○粟根 匠（大阪公立大院・農）・夏井純平（日本製紙(株)）・木村悟朗（イカリ消毒(株)）・上田昇平・中濱直之・平井規央（大阪公立大院・農）</div>
+                                </div>
+                                <div class="pres-item">
+                                    <div class="pres-meta">
+                                        <span class="pres-no">P-19</span>
+                                        <span class="pres-award">※ 最優秀発表賞対象</span>
+                                    </div>
+                                    <div class="pres-title">在来チョウ類幼虫に対するアルゼンチンアリの影響</div>
+                                    <div class="pres-authors">○金広直樹・平井規央・上田昇平（大阪公大院・農）</div>
+                                </div>
+                                <div class="pres-item">
+                                    <div class="pres-meta">
+                                        <span class="pres-no">P-20</span>
+                                    </div>
+                                    <div class="pres-title">宇治川で不快害虫となっているトビケラ類のLED 電撃殺虫による防除</div>
+                                    <div class="pres-authors">○木村悟朗・元杉智（イカリ消毒(株)）・谷山悠起・吉田和貴（FKK消毒(株)）</div>
+                                </div>
+                                <div class="pres-item">
+                                    <div class="pres-meta">
+                                        <span class="pres-no">P-21</span>
+                                    </div>
+                                    <div class="pres-title">関東近郊の一般住宅周辺におけるノシメマダラメイガのトラップ調査</div>
+                                    <div class="pres-authors">○村田 碧・林 昌義・船橋一良・小幡洋輔（エステー(株)）</div>
+                                </div>
+                                <div class="pres-item">
+                                    <div class="pres-meta">
+                                        <span class="pres-no">P-22</span>
+                                    </div>
+                                    <div class="pres-title">ザウテルアカイボトビムシが分泌する防御物質の構造決定とその生物活性</div>
+                                    <div class="pres-authors">○邵嘉俊・森山太介（京都先端大バイオ環境）・大平敦子（千葉科学大学）・中森泰三（横浜国立大学）・清水伸泰（京都先端大バイオ環境）</div>
+                                </div>
+                                <div class="pres-item">
+                                    <div class="pres-meta">
+                                        <span class="pres-no">P-23</span>
+                                    </div>
+                                    <div class="pres-title">トキタマカワニナのゲノムワイドSNP が示唆した琵琶湖固有種間の交雑</div>
+                                    <div class="pres-authors">○清原涼平（関学大院・理工）・澤田直人（九州大・基幹教育院）・藤 博幸（関学大院・理工）</div>
+                                </div>
+                                <div class="pres-item">
+                                    <div class="pres-meta">
+                                        <span class="pres-no">P-24</span>
+                                    </div>
+                                    <div class="pres-title">京都府における止水性ミズスマシ属の情報収集と分布状況について</div>
+                                    <div class="pres-authors">○谷優子（きょうと生物多様性センター）・中嶋智子（京府大院・生命環境）</div>
+                                </div>
+                                <div class="pres-item">
+                                    <div class="pres-meta">
+                                        <span class="pres-no">P-25</span>
+                                    </div>
+                                    <div class="pres-title">日本における生物多様性保全に関する市民の態度の長期変化</div>
+                                    <div class="pres-authors">○古川真莉子・林岳彦（国立環境研究所）</div>
+                                </div>
+                                <div class="pres-item">
+                                    <div class="pres-meta">
+                                        <span class="pres-no">P-26</span>
+                                    </div>
+                                    <div class="pres-title">新規鳥獣ケア商品 カラス立入禁止スプレーの開発</div>
+                                    <div class="pres-authors">○中川真緒・阿部 練・野崎耕作・小堀富広（アース製薬(株)）・橋本知幸（(一財)日本環境衛生センター）</div>
                                 </div>
                             </div>
                         </div>
@@ -410,7 +912,7 @@
                             </button>
                             <div id="geo-message" style="display: none;"></div>
                         </div>
-                        <a href="https://www.kwansei.ac.jp/access/" target="_blank" rel="noopener" class="link-academic">
+                        <a href="https://www.kwansei.ac.jp/access/" target="_blank" rel="noopener" class="link-academic" style="display: block; margin-bottom: 1.5rem;">
                             大学公式サイトのアクセス案内 →
                         </a>
                         <details class="warning-box">
@@ -523,10 +1025,14 @@
                 button.addEventListener('click', () => {
                     const tab = button.dataset.tab;
                     // Hide all tabs
-                    document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
+                    document.querySelectorAll('.tab-button').forEach(b => {
+                        b.classList.remove('active');
+                        b.setAttribute('aria-selected', 'false');
+                    });
                     document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
                     // Show selected
                     button.classList.add('active');
+                    button.setAttribute('aria-selected', 'true');
                     document.getElementById(`tab-${tab}`).classList.add('active');
                 });
             });
