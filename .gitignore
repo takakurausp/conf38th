@@ -1,7 +1,5 @@
-node_modules
-package-lock.json
-src/
-tailwind.config.js
+AGENTS.md
+SKILL_USAGE.md
 *.zip
 .DS_Store
 .opencode/
